@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "./node_modules/.bin/wintersmith build",
+    "preview": "./node_modules/.bin/wintersmith preview"
+  },
+  "dependencies": {
+    "moment": "2.3.x",
+    "typogr": "0.5.x",
+    "underscore": "1.4.x",
+    "wintersmith": "^2.1.0"
+  },
+  "repository": "none"
+}
