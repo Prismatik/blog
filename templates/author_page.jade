@@ -1,0 +1,9 @@
+extend layout
+
+block header
+  - var author = contents.authors[authorKey]
+  h1= author.metadata.name
+
+block content
+  p reach them at 
+    a(href='mailto:#{author.metadata.email}') #{author.metadata.email}

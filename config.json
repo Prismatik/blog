@@ -6,7 +6,8 @@
     "description": "Ramblings of an immor(t)al demigod"
   },
   "plugins": [
-    "./plugins/paginator.coffee"
+    "./plugins/paginator.coffee",
+    "./plugins/authorator.coffee"
   ],
   "require": {
     "moment": "moment",
