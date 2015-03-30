@@ -5,7 +5,7 @@ date: 2015-03-17
 template: article.jade
 ---
 
-At Prismatik we have one core technical principle:
+At Prismatik our core technical principle is:
 
 > ###Use the right tool for the job.
 
