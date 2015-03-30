@@ -44,7 +44,7 @@ There's just no other way to deal with a 100,000 LOC product, though. It's more 
 
 If you're doing SOA right, though, each unit of functionality should be about the right size to hand to one or two developers. Tell them to call you if they hit a road block or once they're finished.
 
-That's not even the best bit, though! Each service has a clearly defined API. Deciding that up front takes a bit of planning effort. Remember, though, you're just desinging the API and not the implementation.
+That's not even the best bit, though! Each service has a clearly defined API. Deciding that up front takes a bit of planning effort. Remember, though, you're just designing the API and not the implementation.
 
 The benefit to this is that your teams are no longer dependent on one another. It doesn't matter that Bob hasn't completed the authorisation service yet. Alice can still get on and build the gamification service, since she knows what Bob's service is going to expect and what it's going to return.
 
