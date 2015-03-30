@@ -49,7 +49,7 @@ Let's say you want to add the ability to process audio in real time. Most of you
 
 The monolith has a problem. Maybe your language supports native modules? Can we write a library in C then bind to that? It's a shame the only option is C/C++, it would be really nice to be able to do this in go/erlang/haskell/etc.
 
-In the SOA, we get to use the Right Tool For The Job! So long as the service adheres to it's API, the rest of the architecture couldn't care less what language it's implemented in.
+In the SOA, we get to use the Right Tool For The Job! So long as the service adheres to its API, the rest of the architecture couldn't care less what language its implemented in.
 
 Might it have been handy to use a graph/columnar/SQL/noSQL/in-memory database for that one little problem space in your app? No reason we can't in an SOA.
 
