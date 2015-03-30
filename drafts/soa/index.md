@@ -27,7 +27,18 @@ In the SOA, there is a bright line of demarcation between your concerns. Each se
 
 It's certainly possible to build a monolith with a big team. It takes an awful lot of teamwork, though.
 
-Lots of developers in the same repository, working on the same code, altering the same logic, making changes to shared models. It becomes really easy to step on each other's toes. This introduces collaboration overhead. Merge conflicts, big standups, cross-team meetings to co-ordinate work.
+It entails lots of developers:
+  * in the same repository,
+  * working on the same code,
+  * altering the same logic,
+  * making changes to shared models.
+
+It becomes really easy to step on each other's toes. This introduces collaboration overhead.
+
+You get:
+  * Merge conflicts,
+  * big standups,
+  * cross-team meetings to co-ordinate work.
 
 There's just no other way to deal with a 100,000 LOC product, though. It's more than one or two people can handle.
 
