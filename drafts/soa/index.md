@@ -52,9 +52,19 @@ The benefit to this is that your teams are no longer dependent on one another. I
 
 Let's say you've had an app in production for 12 months. We need to make some changes to the gamification module. Users want different tiers of rewards and we want to introduce a social following system.
 
-In the monolith, our task is "Figure out how the existing logic has been implemented. Track down any intertwined logic. Either refactor it out or ensure your changes don't break anything. Hopefully the last team left you a good test suite." The early part of this task may well entail needing to understand the entire codebase. Not too hard in a 10k app. In a 100k app you might need to assign a whole team. If you have a 1000k app, call in a project manager to coordinate the discovery process amongst the teams and make sure you're not planning to ship any other features in the near future.
+#### In the monolith, our task is:
+> "Figure out how the existing logic has been implemented. Track down any intertwined logic. Either refactor it out or ensure your changes don't break anything. Hopefully the last team left you a good test suite."
 
-In the SOA our task is the same, but the total possible complexity is limited. It's just a little service. Spend a few hours reading and grokking the 6k LOC, then make the change. There is a clear API contract with the rest of the application to guide us. If it turns out the last developer implemented things badly, just rewrite the thing from scratch. It's a small task with a clear API and you have a reference implementation to work from. We'll be done in no time. Add some extra API surface area to allow other services to subscribe to change events, then go implement that in a separate social following service.
+The early part of this task may well entail needing to understand the entire codebase. Not too hard in a 10k app. In a 100k app you might need to assign a whole team. If you have a 1000k app, call in a project manager to coordinate the discovery process amongst the teams and make sure you're not planning to ship any other features in the near future.
+
+#### In the SOA, our task is:
+Broadly the same, but the total possible complexity is limited. It's just a little service. Spend a few hours reading and grokking the 6k LOC, then make the change.
+
+There is a clear API contract with the rest of the application to guide us. If it turns out the last developer implemented things badly, just rewrite the thing from scratch. It's a small task with a clear API and you have a reference implementation to work from.
+
+We'll be done in no time. Add some extra API surface area to allow other services to subscribe to change events, then go implement that in a separate social following service.
+
+______
 
 Let's say you want to add the ability to process audio in real time. Most of your codebase is in a high-level interpreted language. That's going to be tricky.
 
@@ -63,6 +73,8 @@ The monolith has a problem. Maybe your language supports native modules? Can we 
 In the SOA, we get to use the Right Tool For The Job! So long as the service adheres to its API, the rest of the architecture couldn't care less what language its implemented in.
 
 Might it have been handy to use a graph/columnar/SQL/noSQL/in-memory database for that one little problem space in your app? No reason we can't in an SOA.
+
+______
 
 SOA is one of the tools available to us. It helps us build big, complex systems with a small, focused team. These systems then stay predictable and maintainable.
 
