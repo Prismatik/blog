@@ -1,9 +1,9 @@
 {
   "locals": {
-    "url": "http://localhost:8080",
-    "name": "The Wintersmith's blog",
-    "owner": "Someone",
-    "description": "Ramblings of an immor(t)al demigod"
+    "url": "http://blog.prismatik.com.au",
+    "name": "The Prismatik Blog",
+    "owner": "Prismatik",
+    "description": "Things we find interesting."
   },
   "plugins": [
     "./plugins/paginator.coffee",
