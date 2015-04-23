@@ -1,18 +1,107 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Wintersmith's blog</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
-    <description>Ramblings of an immor(t)al demigod</description>
-    <pubDate>Tue, 17 Mar 2015 11:00:00 +1100</pubDate>
+    <title>The Prismatik Blog</title>
+    <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://blog.prismatik.com.au</link>
+    <description>Things we find interesting.</description>
+    <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>A Guide To The Sydney Startup Community - 8 Lists To Get You Started</title>
+      <link>http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</link>
+      <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</guid>
+      <author></author>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;The startup journey can be lonely, but ensuring you’re involved in the community will make it far more enjoyable and ultimately increase your chances of success.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;These eight lists are designed to provide you with the best support in town, depending on which part of the journey your startup is at.&lt;/p&gt;
+&lt;p&gt;If you’re in the idea stage it may be worth considering hackathons, meetups and networking events.&lt;/p&gt;
+&lt;p&gt;It your startup is just getting going you might like to check out the list of incubators.&lt;/p&gt;
+&lt;p&gt;Or if you’re looking for further growth, check out the accelerators and venture funding.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-meetups-and-networking&quot;&gt;1. Meetups and Networking&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/sydney-tech-startup/&quot;&gt;Sydney Tech Startup meetup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/Silicon-Beach/&quot;&gt;Silicon Beach meetup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/Fishburners-Meetup/events/215667802/&quot;&gt;Fishburners’ Friday Pitches&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://headsoverheels.com.au/&quot;&gt;Heads over Heels&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.sydjs.com/&quot;&gt;SydJS (Javascript developer meetup)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/Ruby-On-Rails-Oceania-Sydney/&quot;&gt;Ruby on Rails Oceania (Ruby on Rails developer meetup)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/ixda-sydney/&quot;&gt;IxDA (User Experience Design meetup)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/Product-Mavens/&quot;&gt;Product Mavens (Product management meetup)&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;2-conference-and-camps&quot;&gt;2. Conference and Camps&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://sydstart.wordpress.com/&quot;&gt;SydStart (Tech startup showcase)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cebit.com.au/&quot;&gt;CeBIT (Business technology conference)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://tiecon.org.au/&quot;&gt;TieCon (Global technology conference)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.adtechaustralia.com/&quot;&gt;ad:tech (Advertising technology conference)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://yowconference.com.au/&quot;&gt;Yow! (Developer conference)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://v.campjs.com/&quot;&gt;Camp JS (Javascript developer camp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://railscamps.com/&quot;&gt;Rails Camp (Ruby on Rails developer camp)&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;3-hackathons-and-pitch-competitions&quot;&gt;3. Hackathons and Pitch Competitions&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.seedstarsworld.com/event/seedstars-sydney-2015/&quot;&gt;Seedstars&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://2015.battlehack.org/&quot;&gt;Battlehack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.govhack.org/&quot;&gt;GovHack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.ecohack.org/&quot;&gt;EcoHack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://angelhack.com/events/&quot;&gt;AngelHack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://sydneyappiness.com/&quot;&gt;Appiness&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.nswcodeworks.com/&quot;&gt;Code Works&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/hackathon&quot;&gt;Facebook Hackathon&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://girlgeeksydney.com/&quot;&gt;She Hacks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://hackagong.com/&quot;&gt;Hackagong&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;4-incubators&quot;&gt;4. Incubators&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://atp-innovations.com.au/&quot;&gt;ATP Innovations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bluechilli.com/&quot;&gt;Blue Chilli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://pollenizer.com/&quot;&gt;Pollenizer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://fi.co/&quot;&gt;Founder Institute&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;5-accelerators&quot;&gt;5. Accelerators&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.slingshotters.com/&quot;&gt;Slingshot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://incubate.org.au/&quot;&gt;Incubate&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.innovyz.com/&quot;&gt;ANZ Innovyz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://sb.co/&quot;&gt;Springboard Enterprises&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://muru-d.com/&quot;&gt;Muru-D&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.elevate61.com.au/&quot;&gt;Elevate 61&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://25fifteen.com/&quot;&gt;25fifteen&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;6-angel-seed-venture-funding&quot;&gt;6. Angel / Seed / Venture Funding&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.one-ventures.com.au/&quot;&gt;One Ventures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://sydneyangels.net.au/&quot;&gt;Sydney Angels&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.tankstream.vc/&quot;&gt;Tank Stream Ventures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.sxvp.com/&quot;&gt;Southern Cross Ventures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.rightclickcapital.com/&quot;&gt;Right Click Capital&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.greenlanedigital.com.au/&quot;&gt;Green Lane Digital&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.blackcitrus.com.au/&quot;&gt;Black Citrus&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://optusinnov8seed.com.au/&quot;&gt;Optus Innov8 Seed&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://airtreevc.com/&quot;&gt;Airtree Ventures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blackbird.vc/&quot;&gt;Blackbird Ventures&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://mhcarnegie.com/&quot;&gt;MH Carnegie&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.innovationcapital.net/&quot;&gt;Innovation Capital&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://innovationbay.com/&quot;&gt;Innovation Bay&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.sydneyseedfund.com.au/&quot;&gt;Sydney Seed Fund&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;7-education&quot;&gt;7. Education&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://generalassemb.ly&quot;&gt;General Assembly (Web Development, User Experience Design, Product Management, Digital Marketing)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://thecoderfactory.com/&quot;&gt;Coder Factory (Web Development)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.brainmates.com.au/&quot;&gt;Brainmates&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;8-co-working-spaces-and-offices&quot;&gt;8. Co-working spaces and offices&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://fishburners.org/&quot;&gt;Fishburners&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.commonroomsyd.com.au/&quot;&gt;Common Room&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://startsoc.wordpress.com/icentral/&quot;&gt;iCentral&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://tankstreamlabs.com/&quot;&gt;Tank Stream Labs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://theworkben.ch/&quot;&gt;Workbench&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.hubaustralia.com/location/sydney/&quot;&gt;Hub Sydney&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Hello World</title>
-      <link>http://localhost:8080/articles/hello-world/</link>
+      <link>http://blog.prismatik.com.au/articles/hello-world/</link>
       <pubDate>Tue, 17 Mar 2015 11:00:00 +1100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/hello-world/</guid>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/hello-world/</guid>
       <author></author>
       <description>&lt;p&gt;Hello world!&lt;/p&gt;
 </description>
