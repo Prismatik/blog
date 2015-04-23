@@ -2,7 +2,7 @@
   "scripts": {
     "build": "./node_modules/.bin/wintersmith build",
     "preview": "./node_modules/.bin/wintersmith preview",
-    "push": "s3cmd --config=~/.s3cfg_prismatik sync --delete-removed -r --acl-public --exclude 'git/*' ./build/ s3://blog.prismatik.com.au"
+    "push": "s3cmd --config=./.s3cfg_prismatik sync --delete-removed -r --acl-public --exclude 'git/*' ./build/ s3://blog.prismatik.com.au"
   },
   "dependencies": {
     "moment": "2.3.x",
