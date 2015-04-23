@@ -24,3 +24,6 @@ Run `npm run preview` and see what it looks like.
 Do you like it? Great! `npm run build`
 
 `npm run push`
+
+## That's much too hard!
+I have put in place a heuristic process based on a state-of-the-art neural net! Just email your blog post to automagical_blog_generator@prismatik.com.au and it will get taken care of.
