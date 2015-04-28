@@ -6,6 +6,7 @@ gulp.task('prod', function () {
     gulp.src('./contents/styles/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./build/css'))
+        .pipe(gulp.dest('./contents/css'))
         .pipe(livereload());
 });
 
