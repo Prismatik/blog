@@ -30,3 +30,11 @@ Do you like it? Great! `npm run build`
 
 ## That's much too hard!
 I have put in place a heuristic process based on a state-of-the-art neural net! Just email your blog post to automagical_blog_generator@prismatik.com.au and it will get taken care of.
+
+## Development
+
+Run `gulp dev` for development.
+
+## Production
+
+Run `gulp prod` before production to compile assets.
