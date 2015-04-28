@@ -1,0 +1,21 @@
+img.author {
+  border-radius: 50%;
+  text-align: center;
+  display: none;
+  
+  @media (min-width: 750px) {
+    display: inline-block
+  }
+}
+
+.author-image {
+  text-align: center;
+}
+
+.author-block {
+  h5 {
+    margin-bottom: 2em;
+  }
+  height: 300px;
+  margin-bottom: 2em;
+}

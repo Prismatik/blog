@@ -1,0 +1,12 @@
+.front-article {
+  margin-bottom: 2em;
+
+  h3 {
+    a {
+      color: $primary;
+      &:hover {
+        color: $prismatik-blue;  
+      }
+    }
+  }
+}

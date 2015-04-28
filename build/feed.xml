@@ -5,11 +5,20 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
+    <pubDate>Tue, 28 Apr 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>A Guide To The Sydney Startup Community - 8 Lists To Get You Started</title>
+      <title>Grrrrravtarrrrsss</title>
+      <link>http://blog.prismatik.com.au/articles/the-gravatar-article/</link>
+      <pubDate>Tue, 28 Apr 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/the-gravatar-article/</guid>
+      <author></author>
+      <description>&lt;p&gt;This is an article to show what the gravatar looks like&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>8 Lists To Get You Started In The Sydney Startup Community</title>
       <link>http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</link>
       <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
       <guid isPermaLink="true">http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</guid>
@@ -18,9 +27,7 @@
 &lt;p&gt;The startup journey can be lonely, but ensuring you’re involved in the community will make it far more enjoyable and ultimately increase your chances of success.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;These eight lists are designed to provide you with the best support in town, depending on which part of the journey your startup is at.&lt;/p&gt;
-&lt;p&gt;If you’re in the idea stage it may be worth considering hackathons, meetups and networking events.&lt;/p&gt;
-&lt;p&gt;It your startup is just getting going you might like to check out the list of incubators.&lt;/p&gt;
-&lt;p&gt;Or if you’re looking for further growth, check out the accelerators and venture funding.&lt;/p&gt;
+&lt;p&gt;If you’re in the idea stage it may be worth considering hackathons, meetups and networking events. If your startup is just getting going you might like to check out the list of incubators. Or, if you’re looking for further growth, check out the accelerators and venture funding.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&quot;1-meetups-and-networking&quot;&gt;1. Meetups and Networking&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.meetup.com/sydney-tech-startup/&quot;&gt;Sydney Tech Startup meetup&lt;/a&gt;&lt;/p&gt;

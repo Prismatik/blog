@@ -1,0 +1,35 @@
+.header {
+  border-bottom: 1px solid $light-gray;
+  
+  a {
+    
+    color: $primary;
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0px;
+    li {
+      margin: 0px;
+      margin-right: 1em;
+      span {
+        padding: 0 1em;
+      }
+      
+      &:hover {
+        border-bottom: 3px solid $prismatik-blue;
+      }
+    }
+    .nav-item {
+      display: inline-block;
+      line-height: 127px;
+    }
+    
+    .selected {
+      border-bottom: 3px solid $prismatik-blue;
+    }
+  }
+}
