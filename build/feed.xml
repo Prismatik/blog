@@ -5,18 +5,9 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Tue, 28 Apr 2015 10:00:00 +1000</pubDate>
+    <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
-    <item>
-      <title>Grrrrravtarrrrsss</title>
-      <link>http://blog.prismatik.com.au/articles/the-gravatar-article/</link>
-      <pubDate>Tue, 28 Apr 2015 10:00:00 +1000</pubDate>
-      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/the-gravatar-article/</guid>
-      <author></author>
-      <description>&lt;p&gt;This is an article to show what the gravatar looks like&lt;/p&gt;
-</description>
-    </item>
     <item>
       <title>8 Lists To Get You Started In The Sydney Startup Community</title>
       <link>http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</link>
