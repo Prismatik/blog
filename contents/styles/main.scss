@@ -9,6 +9,8 @@
 @import "partials/index";
 @import "partials/author";
 @import "partials/footer";
+@import "partials/blockquote";
+@import "partials/article";
 
 /* Globals */
 
@@ -19,4 +21,10 @@ a {
   &:hover {
     color: darken($prismatik-blue, 10)  
   }
+}
+
+.vert {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -1,0 +1,19 @@
+.article-header {
+  padding-bottom: 1em;
+  font-weight: bold;
+}
+
+article {
+  p {
+    font-size: 1.3em;
+  }
+  
+  .article-content {
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 1em;
+  } 
+}
+
+.back {
+  text-align: center;
+}

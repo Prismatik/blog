@@ -469,8 +469,7 @@ body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
-  font-weight: 300; }
+  margin-bottom: 2rem; }
 
 h1 {
   font-size: 4rem;
@@ -776,6 +775,12 @@ img.author {
 .author-image {
   text-align: center; }
 
+.author-block {
+  height: 300px;
+  margin-bottom: 2em; }
+  .author-block h5 {
+    margin-bottom: 2em; }
+
 footer {
   background: #131a1b;
   height: 250px;
@@ -790,9 +795,46 @@ footer {
 .copy {
   text-align: center; }
 
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #00a9a5;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em; }
+
+blockquote p {
+  display: inline;
+  font-style: italic; }
+
+.article-header {
+  padding-bottom: 1em;
+  font-weight: bold; }
+
+article p {
+  font-size: 1.3em; }
+article .article-content {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 1em; }
+
+.back {
+  text-align: center; }
+
 /* Globals */
 a {
   text-decoration: none;
   color: #00a9a5; }
   a:hover {
     color: #007673; }
+
+.vert {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }

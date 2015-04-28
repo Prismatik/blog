@@ -10,11 +10,7 @@ blurb: These eight lists are designed to provide you with the best support in to
 
 These eight lists are designed to provide you with the best support in town, depending on which part of the journey your startup is at.
 
-If you’re in the idea stage it may be worth considering hackathons, meetups and networking events.
-
-It your startup is just getting going you might like to check out the list of incubators.
-
-Or if you’re looking for further growth, check out the accelerators and venture funding.
+If you’re in the idea stage it may be worth considering hackathons, meetups and networking events. If your startup is just getting going you might like to check out the list of incubators. Or, if you’re looking for further growth, check out the accelerators and venture funding.
 
 * * *
 

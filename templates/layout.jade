@@ -23,7 +23,7 @@ html(lang='en')
           ul.u-pull-right
             a(href='http://prismatik.com.au/')
               li.nav-item 
-                span HOME
+                span MAIN SITE
             a(href='/')
               li.nav-item.selected 
                 span BLOG
@@ -36,14 +36,18 @@ html(lang='en')
           block content
       footer
         div.container
-          div.logo.gray prismatik
+          a(href="http://prismatik.com.au")
+            div.logo.gray prismatik
           .row
             .seven.columns
               section.about
                 !=contents['about.md'].html
             .five.columns
-              i.fa.fa-twitter.fa-3x
-              i.fa.fa-google-plus.fa-3x
-              i.fa.fa-facebook.fa-3x
+              a(href="https://twitter.com/theprismatik")
+                i.fa.fa-twitter.fa-3x
+              a(href="https://twitter.com/theprismatik")    
+                i.fa.fa-google-plus.fa-3x
+              a(href="https://www.facebook.com/ThePrismatik")    
+                i.fa.fa-facebook.fa-3x
           section.copy
             p &copy; #{ new Date().getFullYear() } #{ locals.owner }

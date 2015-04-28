@@ -1,9 +1,9 @@
-mixin authorImage(article)
+mixin authorImage(article, size)
   - var author = contents.authors[article.metadata.author + '.json']
   span.author
     if author
       a(href=article.url)
-        img.author(src="https://s.gravatar.com/avatar/" + author.metadata.avatarHash + "?s=100")   
+        img.author(src="https://s.gravatar.com/avatar/" + author.metadata.avatarHash + "?s=" + size)   
     else
       a(href=article.url)
-        img.author(src="https://s.gravatar.com/avatar/?s=100")
+        img.author(src="https://s.gravatar.com/avatar/?s=" + size)
