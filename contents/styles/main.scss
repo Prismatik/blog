@@ -1,5 +1,22 @@
-// Bourbon, Neat & Bitters
-@import "bourbon/bourbon";
-@import "base/grid-settings";
-@import "neat/neat";
-@import "base/base";
+@import "variables";
+
+@import "normalize";
+@import "skeleton";
+
+@import "partials/layout";
+@import "partials/logo";
+@import "partials/header";
+@import "partials/index";
+@import "partials/author";
+@import "partials/footer";
+
+/* Globals */
+
+a {
+  text-decoration: none;
+  color: $prismatik-blue;
+  
+  &:hover {
+    color: darken($prismatik-blue, 10)  
+  }
+}

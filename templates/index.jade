@@ -1,22 +1,21 @@
 extends layout
 
 block content
-  include author
+  include author_image
   each article in articles
-    article.article.intro
-      header
-        p.date
-          span= moment.utc(article.date).format('DD. MMMM YYYY')
-        h2
-          a(href=article.url)= article.title
-      section.content
-        if article.intro.length > 0
-          | !{ typogr(article.intro).typogrify() }
-        if article.hasMore
-          p.more
-            a(href=article.url) more
-
-block prepend footer
+    article.front-article
+      .row
+        .two.columns.author-image
+          +authorImage(article)  
+        .ten.columns
+          h3
+            strong
+              a(href=article.url)= article.title
+          section.content
+            p
+              | #{article.metadata.blurb}
+              span.more
+                a(href=article.url)  Read more...
   div.nav
     if prevPage
       a(href=prevPage.url) « Newer
@@ -24,6 +23,3 @@ block prepend footer
       a(href='/archive.html') « Archives
     if nextPage
       a(href=nextPage.url) Next page »
-
-
-

@@ -1,8 +1,9 @@
 ---
-title: A Guide To The Sydney Startup Community - 8 Lists To Get You Started
+title: 8 Lists To Get You Started In The Sydney Startup Community
 author: bencochrane
 date: 2015-04-19
 template: article.jade
+blurb: These eight lists are designed to provide you with the best support in town, depending on which part of the journey your startup is at.
 ---
 
 > The startup journey can be lonely, but ensuring you’re involved in the community will make it far more enjoyable and ultimately increase your chances of success.

@@ -12,5 +12,5 @@ gulp.task('prod', function () {
 
 gulp.task('dev', function() {
   livereload.listen();
-  gulp.watch('./contents/styles/*.scss', ['prod']);
+  gulp.watch('./contents/styles/*', ['prod']);
 });

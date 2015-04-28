@@ -1,0 +1,17 @@
+footer {
+  background: $primary;
+	height: 250px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: $ml-gray;
+  
+  i {
+    margin-right: 1em;
+  }
+}
+
+.copy {
+  text-align: center;
+}
