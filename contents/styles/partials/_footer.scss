@@ -10,6 +10,13 @@ footer {
   i {
     margin-right: 1em;
   }
+  
+  a {
+    color: $off-white;
+    &:hover {
+      color: $prismatik-blue;
+    }
+  }
 }
 
 .copy {
