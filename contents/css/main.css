@@ -723,7 +723,10 @@ html {
 
 #content {
   margin-top: 5em;
-  padding-bottom: 350px; }
+  padding-bottom: 440px; }
+  @media (min-width: 900px) {
+    #content {
+      padding-bottom: 350px; } }
 
 .logo {
   font-family: 'prismatik';
@@ -766,20 +769,25 @@ html {
 
 img.author {
   border-radius: 50%;
-  text-align: center;
-  display: none; }
-  @media (min-width: 750px) {
-    img.author {
-      display: inline-block; } }
+  text-align: center; }
 
 .author-image {
   text-align: center; }
+
+.author-text {
+  text-align: center; }
+  @media (min-width: 750px) {
+    .author-text {
+      text-align: left; } }
 
 .author-block {
   height: 300px;
   margin-bottom: 2em; }
   .author-block h5 {
     margin-bottom: 2em; }
+
+.author {
+  text-align: center; }
 
 footer {
   background: #131a1b;
@@ -788,16 +796,24 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #434c4d; }
+  color: #434c4d;
+  padding-bottom: 90px; }
   footer i {
     margin-right: 1em; }
   footer a {
     color: #fafafa; }
     footer a:hover {
       color: #00a9a5; }
+  @media (min-width: 900px) {
+    footer {
+      padding-bottom: 0px; } }
 
 .copy {
   text-align: center; }
+
+.small-socials {
+  text-align: center;
+  padding-bottom: 20px; }
 
 blockquote {
   background: #f9f9f9;
@@ -831,6 +847,36 @@ article .article-content {
 .back {
   text-align: center; }
 
+.menu-btn div {
+  position: absolute;
+  left: 100%;
+  top: 64%;
+  padding-right: 8px;
+  margin-top: -0.5em;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: 200;
+  vertical-align: middle;
+  z-index: 99; }
+.menu-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  background: black;
+  z-index: 99; }
+
+.responsive-menu {
+  display: none;
+  text-align: center; }
+
+.expand {
+  display: block !important; }
+
+.mobile-nav {
+  cursor: pointer;
+  height: 127px; }
+
 /* Globals */
 a {
   text-decoration: none;
@@ -842,3 +888,27 @@ a {
   position: relative;
   top: 50%;
   transform: translateY(-50%); }
+
+.no-mobile {
+  display: none; }
+  @media (min-width: 750px) {
+    .no-mobile {
+      display: inline-block; } }
+
+.no-desktop {
+  display: inline-block; }
+  @media (min-width: 750px) {
+    .no-desktop {
+      display: none; } }
+
+.hide-small {
+  display: none; }
+  @media (min-width: 820px) {
+    .hide-small {
+      display: inline-block; } }
+
+.show-small {
+  display: block; }
+  @media (min-width: 820px) {
+    .show-small {
+      display: none; } }

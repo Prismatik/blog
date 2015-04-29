@@ -14,13 +14,15 @@ html(lang='en')
       link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300')
       link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
       link(rel='stylesheet', href='/css/main.css')
+      script(src='/scripts/jquery.js')
+      script(src='/scripts/hamburger.js')
   body(class=bodyclass)
     .wrapper
       header.header
         div.container-wider
           a(href='http://prismatik.com.au')
             div.logo prismatik
-          ul.u-pull-right
+          ul.u-pull-right.no-mobile
             a(href='http://prismatik.com.au/')
               li.nav-item 
                 span MAIN SITE
@@ -30,24 +32,49 @@ html(lang='en')
             a(href='http://prismatik.com.au/contact/')
               li.nav-item 
                 span CONTACT
-            
+                
+          a.mobile-nav.u-pull-right.no-desktop
+            .menu-btn#menu-btn.vert
+              div
+              span
+              span
+              span
+                
+          .responsive-menu
+            ul
+              a(href='http://prismatik.com.au/')
+                li.nav-item
+                  span MAIN SITE
+              a(href='/')
+                li.nav-item.selected 
+                  span BLOG
+              a(href='http://prismatik.com.au/contact/')
+                li.nav-item 
+                  span CONTACT
       div#content
         div.container
           block content
       footer
-        div.container
+        .container
           a(href="http://prismatik.com.au")
             div.logo.white prismatik
           .row
             .seven.columns
               section.about
                 !=contents['about.md'].html
-            .five.columns
+            .five.columns.hide-small
               a(href="https://twitter.com/theprismatik")
                 i.fa.fa-twitter.fa-3x
               a(href="https://twitter.com/theprismatik")    
                 i.fa.fa-google-plus.fa-3x
               a(href="https://www.facebook.com/ThePrismatik")    
                 i.fa.fa-facebook.fa-3x
+          .row.show-small.small-socials
+            a(href="https://twitter.com/theprismatik")
+              i.fa.fa-twitter.fa-3x
+            a(href="https://twitter.com/theprismatik")    
+              i.fa.fa-google-plus.fa-3x
+            a(href="https://www.facebook.com/ThePrismatik")    
+              i.fa.fa-facebook.fa-3x
           section.copy
-            p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+            | &copy; #{ new Date().getFullYear() } #{ locals.owner }
