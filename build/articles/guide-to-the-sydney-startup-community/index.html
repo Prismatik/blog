@@ -10,16 +10,27 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/hamburger.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
         <div class="container-wider"><a href="http://prismatik.com.au">
             <div class="logo">prismatik</div></a>
-          <ul class="u-pull-right"><a href="http://prismatik.com.au/">
+          <ul class="u-pull-right no-mobile"><a href="http://prismatik.com.au/">
               <li class="nav-item"> <span>MAIN SITE</span></li></a><a href="/">
               <li class="nav-item selected"> <span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
-              <li class="nav-item"> <span>CONTACT</span></li></a></ul>
+              <li class="nav-item"> <span>CONTACT</span></li></a></ul><a class="mobile-nav u-pull-right no-desktop">
+            <div id="menu-btn" class="menu-btn vert">
+              <div></div><span></span><span></span><span></span>
+            </div></a>
+          <div class="responsive-menu">
+            <ul><a href="http://prismatik.com.au/">
+                <li class="nav-item"><span>MAIN SITE</span></li></a><a href="/">
+                <li class="nav-item selected"> <span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+                <li class="nav-item"> <span>CONTACT</span></li></a></ul>
+          </div>
         </div>
       </header>
       <div id="content">
@@ -109,7 +120,7 @@
 <p><a href="http://www.hubaustralia.com/location/sydney/">Hub&nbsp;Sydney</a></p>
 </section>
           </article>
-          <div class="author-block">
+          <div class="author-block author-text">
             <h5> <em>About The Author</em></h5>
             <div class="row">
               <div class="four columns"><span class="author"><a href="/articles/guide-to-the-sydney-startup-community/"><img src="https://s.gravatar.com/avatar/5bc1d5aad022b1c2a7149af9395d53ee?s=200" class="author"></a></span>
@@ -148,11 +159,10 @@
 
               </section>
             </div>
-            <div class="five columns"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+            <div class="five columns hide-small"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
           </div>
-          <section class="copy">
-            <p>&copy; 2015 Prismatik</p>
-          </section>
+          <div class="row show-small small-socials"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          <section class="copy">&copy; 2015 Prismatik</section>
         </div>
       </footer>
     </div>

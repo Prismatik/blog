@@ -11,6 +11,7 @@
 @import "partials/footer";
 @import "partials/blockquote";
 @import "partials/article";
+@import "partials/hamburger";
 
 /* Globals */
 
@@ -27,4 +28,31 @@ a {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.no-mobile {
+  display: none;
+  @media (min-width: 750px) {
+    display: inline-block;
+  }
+}
+
+.no-desktop {
+  display: inline-block;
+  @media (min-width: 750px) {
+    display: none;
+  }
+}
+
+.hide-small {
+  display: none;
+  @media (min-width: 820px) {
+    display: inline-block;
+  }
+}
+.show-small {
+  display: block;
+  @media (min-width: 820px) {
+    display: none;
+  }
 }

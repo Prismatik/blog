@@ -13,5 +13,8 @@ html {
 
 #content {
   margin-top: 5em;
-	padding-bottom: 350px;
+	padding-bottom: 440px;
+	@media (min-width: 900px) {
+		padding-bottom: 350px;
+	}
 }

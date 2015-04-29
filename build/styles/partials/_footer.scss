@@ -17,8 +17,17 @@ footer {
       color: $prismatik-blue;
     }
   }
+  padding-bottom: 90px;
+  @media (min-width: 900px) {
+    padding-bottom: 0px;
+  }
 }
 
 .copy {
   text-align: center;
+}
+
+.small-socials {
+  text-align: center;
+  padding-bottom: 20px;
 }
