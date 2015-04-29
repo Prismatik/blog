@@ -12,7 +12,7 @@ The default [wintersmith](https://github.com/jnordberg/wintersmith) template
 
 `s3cmd --configure` (nb: if you already have a ~/.s3cfg, move it out of the way)
 
-`ln -s ~/.s3fg ./s3cfg_prismatik`
+`ln -s ~/.s3cfg ./.s3cfg_prismatik`
 
 ## Every time
 
