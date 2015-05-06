@@ -5,9 +5,74 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Sun, 19 Apr 2015 10:00:00 +1000</pubDate>
+    <pubDate>Wed, 06 May 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Benefits of Service Oriented Architectures</title>
+      <link>http://blog.prismatik.com.au/articles/soa/</link>
+      <pubDate>Wed, 06 May 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/soa/</guid>
+      <author></author>
+      <description>&lt;p&gt;At Prismatik our core technical principle is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&quot;use-the-right-tool-for-the-job-&quot;&gt;Use the right tool for the job.&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of the things this results in is how we architect applications. For a lot of the things we build, a service oriented architecture (SOA) is a great choice.&lt;/p&gt;
+&lt;p&gt;Step one in building an SOA is to separate your application into concerns. For example, authentication of users and gamification of user actions are two different things. In a traditional monolithic architecture, these would probably be lumped into one process.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/soa/monolith_1.png&quot; alt=&quot;A small monolith with two functions&quot;&gt;&lt;/p&gt;
+&lt;p&gt;In an SOA these would be separate services, living in separate repositories, potentially on separate servers. This makes your architecture diagram a little more complex.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/soa/soa_1.png&quot; alt=&quot;A small SOA with two services&quot;&gt;&lt;/p&gt;
+&lt;p&gt;But it makes the code we write wonderfully simple. In the monolith, you can separate your concerns into modules. That’s a fine approach, but it can get messy very quickly. It’s all too easy to let state and logic leak from one part of the application to another.&lt;/p&gt;
+&lt;p&gt;In the SOA, there is a bright line of demarcation between your concerns. Each service can then be further compartmentalised with modules and other code organisation techniques.&lt;/p&gt;
+&lt;p&gt;The maintenance burden of one 10,000 LOC app is about the same as two 6,000 LOC apps.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/soa/monolith_2.png&quot; alt=&quot;A small monolith with two functions totalling 10k LOC&quot;&gt;
+&lt;img src=&quot;/articles/soa/soa_2.png&quot; alt=&quot;A small SOA with two services each with 6k LOC&quot;&gt;&lt;/p&gt;
+&lt;p&gt;So an SOA really starts paying dividends as your system grows. The monolith grows vertically while the SOA grows horizontally.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/soa/monolith_3.png&quot; alt=&quot;A larger monolith with four functions totalling 40k LOC&quot;&gt;
+&lt;img src=&quot;/articles/soa/soa_3.png&quot; alt=&quot;A larger SOA with four services each with 6k LOC&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The burden of one 100,000 LOC app is &lt;em&gt;much&lt;/em&gt; greater than the burden of ten 6,000 LOC apps.&lt;/p&gt;
+&lt;h2 id=&quot;benefits-to-team-structure&quot;&gt;Benefits to team structure&lt;/h2&gt;
+&lt;p&gt;It’s certainly possible to build a monolith with a big team. It takes an awful lot of teamwork, though.&lt;/p&gt;
+&lt;p&gt;It entails lots of developers who are all:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;in the same repository,&lt;/li&gt;
+&lt;li&gt;working on the same code,&lt;/li&gt;
+&lt;li&gt;altering the same logic,&lt;/li&gt;
+&lt;li&gt;making changes to shared models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It becomes really easy to step on each other’s toes. This introduces collaboration overhead.&lt;/p&gt;
+&lt;p&gt;You get:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Merge conflicts,&lt;/li&gt;
+&lt;li&gt;big standups,&lt;/li&gt;
+&lt;li&gt;cross-team meetings to co-ordinate work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There’s just no other way to deal with a 100,000 LOC product, though. It’s more than one or two people can handle.&lt;/p&gt;
+&lt;p&gt;If you’re doing SOA right, though, each unit of functionality should be about the right size to hand to one or two developers. Tell them to call you if they hit a road block or once they’re finished.&lt;/p&gt;
+&lt;p&gt;That’s not even the best bit, though! Each service has a clearly defined API. Deciding that up front takes a bit of planning effort. Remember, though, you’re just designing the API and not the implementation.&lt;/p&gt;
+&lt;p&gt;The benefit to this is that your teams are no longer dependent on one another. It doesn’t matter that Bob hasn’t completed the authorisation service yet. Alice can still get on and build the gamification service, since she knows what Bob’s service is going to expect and what it’s going to return.&lt;/p&gt;
+&lt;h2 id=&quot;benefits-to-maintainability&quot;&gt;Benefits to maintainability&lt;/h2&gt;
+&lt;p&gt;Let’s say you’ve had an app in production for 12 months. We need to make some changes to the gamification module. Users want different tiers of rewards and we want to introduce a social following system.&lt;/p&gt;
+&lt;h4 id=&quot;in-the-monolith-our-task-is-&quot;&gt;In the monolith, our task is:&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Figure out how the existing logic has been implemented. Track down any intertwined logic. Either refactor it out or ensure your changes don’t break anything. Hopefully the last team left you a good test suite.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The early part of this task may well entail needing to understand the entire codebase. Not too hard in a 10k app. In a 100k app you might need to assign a whole team. If you have a 1000k app, call in a project manager to coordinate the discovery process amongst the teams and make sure you’re not planning to ship any other features in the near future.&lt;/p&gt;
+&lt;h4 id=&quot;in-the-soa-our-task-is-&quot;&gt;In the SOA, our task is:&lt;/h4&gt;
+&lt;p&gt;Broadly the same, but the total possible complexity is limited. It’s just a little service. Spend a few hours reading and grokking the 6k LOC, then make the change.&lt;/p&gt;
+&lt;p&gt;There is a clear API contract with the rest of the application to guide us. If it turns out the last developer implemented things badly, just rewrite the thing from scratch. It’s a small task with a clear API and you have a reference implementation to work from.&lt;/p&gt;
+&lt;p&gt;We’ll be done in no time. Add some extra API surface area to allow other services to subscribe to change events, then go implement that in a separate social following service.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Let’s say you want to add the ability to process audio in real time. Most of your codebase is in a high-level interpreted language. That’s going to be tricky.&lt;/p&gt;
+&lt;p&gt;The monolith has a problem. Maybe your language supports native modules? Can we write a library in C then bind to that? It’s a shame the only option is C/C++, it would be really nice to be able to do this in go/erlang/haskell/etc.&lt;/p&gt;
+&lt;p&gt;In the SOA, we get to use the Right Tool For The Job! So long as the service adheres to its API, the rest of the architecture couldn’t care less what language its implemented in.&lt;/p&gt;
+&lt;p&gt;Might it have been handy to use a graph/columnar/SQL/noSQL/in-memory database for that one little problem space in your app? No reason we can’t in an SOA.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;SOA is one of the tools available to us. It helps us build big, complex systems with a small, focused team. These systems then stay predictable and maintainable.&lt;/p&gt;
+&lt;p&gt;We end up reaching for it a lot.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>8 Lists To Get You Started In The Sydney Startup Community</title>
       <link>http://blog.prismatik.com.au/articles/guide-to-the-sydney-startup-community/</link>

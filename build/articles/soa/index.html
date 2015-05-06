@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Benefits of Service Oriented Architectures - The Prismatik Blog
+    </title>
+    <link rel="alternate" href="http://blog.prismatik.com.au/feed.xml" type="application/rss+xml" title="Things we find interesting.">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/hamburger.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container-wider"><a href="http://prismatik.com.au">
+            <div class="logo">prismatik</div></a>
+          <ul class="u-pull-right no-mobile"><a href="http://prismatik.com.au/">
+              <li class="nav-item"><span>MAIN SITE</span></li></a><a href="/">
+              <li class="nav-item selected"><span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+              <li class="nav-item"><span>CONTACT</span></li></a></ul><a class="mobile-nav u-pull-right no-desktop">
+            <div id="menu-btn" class="menu-btn vert">
+              <div></div><span></span><span></span><span></span>
+            </div></a>
+          <div class="responsive-menu">
+            <ul><a href="http://prismatik.com.au/">
+                <li class="nav-item"><span>MAIN SITE</span></li></a><a href="/">
+                <li class="nav-item selected"><span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+                <li class="nav-item"><span>CONTACT</span></li></a></ul>
+          </div>
+        </div>
+      </header>
+      <div id="content">
+        <div class="container">
+          <div class="article-header">
+            <h1>Benefits of Service Oriented Architectures</h1>
+          </div>
+          <article class="article">
+            <section class="article-content"><p>At Prismatik our core technical principle&nbsp;is:</p>
+<blockquote>
+<h3 id="use-the-right-tool-for-the-job-">Use the right tool for the&nbsp;job.</h3>
+</blockquote>
+<p>One of the things this results in is how we architect applications. For a lot of the things we build, a service oriented architecture (<span class="caps">SOA</span>) is a great&nbsp;choice.</p>
+<p>Step one in building an <span class="caps">SOA</span> is to separate your application into concerns. For example, authentication of users and gamification of user actions are two different things. In a traditional monolithic architecture, these would probably be lumped into one&nbsp;process.</p>
+<p><img src="/articles/soa/monolith_1.png" alt="A small monolith with two functions"></p>
+<p>In an <span class="caps">SOA</span> these would be separate services, living in separate repositories, potentially on separate servers. This makes your architecture diagram a little more&nbsp;complex.</p>
+<p><img src="/articles/soa/soa_1.png" alt="A small SOA with two services"></p>
+<p>But it makes the code we write wonderfully simple. In the monolith, you can separate your concerns into modules. That’s a fine approach, but it can get messy very quickly. It’s all too easy to let state and logic leak from one part of the application to&nbsp;another.</p>
+<p>In the <span class="caps">SOA</span>, there is a bright line of demarcation between your concerns. Each service can then be further compartmentalised with modules and other code organisation&nbsp;techniques.</p>
+<p>The maintenance burden of one 10,000 <span class="caps">LOC</span> app is about the same as two 6,000 LOC&nbsp;apps.</p>
+<p><img src="/articles/soa/monolith_2.png" alt="A small monolith with two functions totalling 10k LOC">
+<img src="/articles/soa/soa_2.png" alt="A small SOA with two services each with 6k LOC"></p>
+<p>So an <span class="caps">SOA</span> really starts paying dividends as your system grows. The monolith grows vertically while the SOA grows&nbsp;horizontally.</p>
+<p><img src="/articles/soa/monolith_3.png" alt="A larger monolith with four functions totalling 40k LOC">
+<img src="/articles/soa/soa_3.png" alt="A larger SOA with four services each with 6k LOC"></p>
+<p>The burden of one 100,000 <span class="caps">LOC</span> app is <em>much</em> greater than the burden of ten 6,000 <span class="caps">LOC</span>&nbsp;apps.</p>
+<h2 id="benefits-to-team-structure">Benefits to team&nbsp;structure</h2>
+<p>It’s certainly possible to build a monolith with a big team. It takes an awful lot of teamwork,&nbsp;though.</p>
+<p>It entails lots of developers who are&nbsp;all:</p>
+<ul>
+<li>in the same&nbsp;repository,</li>
+<li>working on the same&nbsp;code,</li>
+<li>altering the same&nbsp;logic,</li>
+<li>making changes to shared&nbsp;models.</li>
+</ul>
+<p>It becomes really easy to step on each other’s toes. This introduces collaboration&nbsp;overhead.</p>
+<p>You&nbsp;get:</p>
+<ul>
+<li>Merge&nbsp;conflicts,</li>
+<li>big&nbsp;standups,</li>
+<li>cross-team meetings to co-ordinate&nbsp;work.</li>
+</ul>
+<p>There’s just no other way to deal with a 100,000 <span class="caps">LOC</span> product, though. It’s more than one or two people can&nbsp;handle.</p>
+<p>If you’re doing <span class="caps">SOA</span> right, though, each unit of functionality should be about the right size to hand to one or two developers. Tell them to call you if they hit a road block or once they’re&nbsp;finished.</p>
+<p>That’s not even the best bit, though! Each service has a clearly defined <span class="caps">API</span>. Deciding that up front takes a bit of planning effort. Remember, though, you’re just designing the API and not the&nbsp;implementation.</p>
+<p>The benefit to this is that your teams are no longer dependent on one another. It doesn’t matter that Bob hasn’t completed the authorisation service yet. Alice can still get on and build the gamification service, since she knows what Bob’s service is going to expect and what it’s going to&nbsp;return.</p>
+<h2 id="benefits-to-maintainability">Benefits to&nbsp;maintainability</h2>
+<p>Let’s say you’ve had an app in production for 12 months. We need to make some changes to the gamification module. Users want different tiers of rewards and we want to introduce a social following&nbsp;system.</p>
+<h4 id="in-the-monolith-our-task-is-">In the monolith, our task&nbsp;is:</h4>
+<blockquote>
+<p>“Figure out how the existing logic has been implemented. Track down any intertwined logic. Either refactor it out or ensure your changes don’t break anything. Hopefully the last team left you a good test&nbsp;suite.”</p>
+</blockquote>
+<p>The early part of this task may well entail needing to understand the entire codebase. Not too hard in a 10k app. In a 100k app you might need to assign a whole team. If you have a 1000k app, call in a project manager to coordinate the discovery process amongst the teams and make sure you’re not planning to ship any other features in the near&nbsp;future.</p>
+<h4 id="in-the-soa-our-task-is-">In the <span class="caps">SOA</span>, our task&nbsp;is:</h4>
+<p>Broadly the same, but the total possible complexity is limited. It’s just a little service. Spend a few hours reading and grokking the 6k <span class="caps">LOC</span>, then make the&nbsp;change.</p>
+<p>There is a clear <span class="caps">API</span> contract with the rest of the application to guide us. If it turns out the last developer implemented things badly, just rewrite the thing from scratch. It’s a small task with a clear API and you have a reference implementation to work&nbsp;from.</p>
+<p>We’ll be done in no time. Add some extra <span class="caps">API</span> surface area to allow other services to subscribe to change events, then go implement that in a separate social following&nbsp;service.</p>
+<hr>
+<p>Let’s say you want to add the ability to process audio in real time. Most of your codebase is in a high-level interpreted language. That’s going to be&nbsp;tricky.</p>
+<p>The monolith has a problem. Maybe your language supports native modules? Can we write a library in C then bind to that? It’s a shame the only option is C/C++, it would be really nice to be able to do this in&nbsp;go/erlang/haskell/etc.</p>
+<p>In the <span class="caps">SOA</span>, we get to use the Right Tool For The Job! So long as the service adheres to its API, the rest of the architecture couldn’t care less what language its implemented&nbsp;in.</p>
+<p>Might it have been handy to use a graph/columnar/<span class="caps">SQL</span>/noSQL/in-memory database for that one little problem space in your app? No reason we can’t in an&nbsp;SOA.</p>
+<hr>
+<p><span class="caps">SOA</span> is one of the tools available to us. It helps us build big, complex systems with a small, focused team. These systems then stay predictable and&nbsp;maintainable.</p>
+<p>We end up reaching for it a&nbsp;lot.</p>
+</section>
+          </article>
+          <div class="author-block author-text">
+            <h5><em>About The Author</em></h5>
+            <div class="row">
+              <div class="four columns"><span class="author"><a href="/articles/soa/"><img src="https://s.gravatar.com/avatar/c8056ef89cc5e85963802bcd5d22ff0b?s=200" class="author"></a></span>
+              </div>
+              <div class="eight columns">
+                <h4>David Banham</h4>
+                <p>Prismatik's CTO.</p>
+              </div>
+            </div>
+          </div>
+          <div class="back"><a href="/">
+              <h6>« Back to Blog</h6></a></div>
+          <div class="comments">
+            <div id="disqus_thread">
+              <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'prismatik';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="container"><a href="http://prismatik.com.au">
+            <div class="logo white">prismatik</div></a>
+          <div class="row">
+            <div class="seven columns">
+              <section class="about"><p><a href="https://prismatik.com.au">Prismatik</a> helps passionate people build great software and businesses. We could help you do that too! <a href="https://prismatik.com.au/contact/">Get in touch</a></p>
+
+              </section>
+            </div>
+            <div class="five columns hide-small"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          </div>
+          <div class="row show-small small-socials"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          <section class="copy">&copy; 2015 Prismatik</section>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

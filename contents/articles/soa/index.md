@@ -1,7 +1,7 @@
 ---
-title: SOA
+title: Benefits of Service Oriented Architectures
 author: davidbanham
-date: 2015-03-17
+date: 2015-05-06
 template: article.jade
 ---
 
@@ -13,21 +13,33 @@ One of the things this results in is how we architect applications. For a lot of
 
 Step one in building an SOA is to separate your application into concerns. For example, authentication of users and gamification of user actions are two different things. In a traditional monolithic architecture, these would probably be lumped into one process.
 
-(Image depicting monolith)
+![A small monolith with two functions](monolith_1.png)
 
 In an SOA these would be separate services, living in separate repositories, potentially on separate servers. This makes your architecture diagram a little more complex.
 
-(Image depicting SOA)
+![A small SOA with two services](soa_1.png)
 
 But it makes the code we write wonderfully simple. In the monolith, you can separate your concerns into modules. That's a fine approach, but it can get messy very quickly. It's all too easy to let state and logic leak from one part of the application to another.
 
-In the SOA, there is a bright line of demarcation between your concerns. Each service can then be further compartmentalised with modules and other code organisation techniques. This really starts paying dividends as your system grows. The maintenance burden of one 10,000 LOC app is about the same as two 6,000 LOC apps. The burden of one 100,000 LOC app is much greater than the burden of ten 6,000 LOC apps.
+In the SOA, there is a bright line of demarcation between your concerns. Each service can then be further compartmentalised with modules and other code organisation techniques.
+
+The maintenance burden of one 10,000 LOC app is about the same as two 6,000 LOC apps.
+
+![A small monolith with two functions totalling 10k LOC](monolith_2.png)
+![A small SOA with two services each with 6k LOC](soa_2.png)
+
+So an SOA really starts paying dividends as your system grows. The monolith grows vertically while the SOA grows horizontally.
+
+![A larger monolith with four functions totalling 40k LOC](monolith_3.png)
+![A larger SOA with four services each with 6k LOC](soa_3.png)
+
+The burden of one 100,000 LOC app is _much_ greater than the burden of ten 6,000 LOC apps.
 
 ## Benefits to team structure
 
 It's certainly possible to build a monolith with a big team. It takes an awful lot of teamwork, though.
 
-It entails lots of developers:
+It entails lots of developers who are all:
   * in the same repository,
   * working on the same code,
   * altering the same logic,
