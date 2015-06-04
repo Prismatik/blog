@@ -3,6 +3,7 @@ title: Benefits of Service Oriented Architectures
 author: davidbanham
 date: 2015-05-06
 template: article.jade
+blurb: Both to products and teams.
 ---
 
 At Prismatik our core technical principle is:
