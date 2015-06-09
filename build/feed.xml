@@ -5,9 +5,41 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Wed, 06 May 2015 10:00:00 +1000</pubDate>
+    <pubDate>Thu, 04 Jun 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Technical Debt</title>
+      <link>http://blog.prismatik.com.au/articles/technical-debt/</link>
+      <pubDate>Thu, 04 Jun 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/technical-debt/</guid>
+      <author></author>
+      <description>&lt;blockquote&gt;
+&lt;h4 id=&quot;technical-debt-is-simultaneously-the-most-difficult-and-most-important-concept-we-must-communicate-to-our-clients-&quot;&gt;Technical debt is simultaneously the most difficult and most important concept we must communicate to our clients.&lt;/h4&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Debt is a tool like any other. Paying for things on a high interest credit card is often okay.&lt;/p&gt;
+&lt;p&gt;It’s especially okay if you’re purchasing an asset that will earn you money at a higher rate of return than the interest you’re paying. Incurring debt is fine, provided you have the means to support the obligation.&lt;/p&gt;
+&lt;p&gt;You must never forget that the debt exists. You must either repay the principal or continue paying the interest. If you take too long repaying the principal, the cumulative interest payments will wipe out the profit you made on the asset.&lt;/p&gt;
+&lt;h3 id=&quot;let-s-map-this-analogy-back-to-software&quot;&gt;Let’s map this analogy back to software&lt;/h3&gt;
+&lt;p&gt;Your team has a level of equilibrium. &lt;strong&gt;This is the pace at which they can add new features while still having time to consolidate, test and refactor.&lt;/strong&gt; This pace can be maintained indefinitely. Pushing them beyond this level is putting features on your credit card.&lt;/p&gt;
+&lt;p&gt;Your credit card has interest. As time goes on, every feature you wish to add in the future will take longer and have more bugs.&lt;/p&gt;
+&lt;p&gt;This interest compounds, too. The longer the principal remains unpaid, the more workarounds and quick fixes your team will need to implement.&lt;/p&gt;
+&lt;p&gt;To repay that princpal, you need to spend some time on the technical fundamentals of your product. Accept a slower pace of new features in exchange for making it significantly easier to add new features in the future. Your reward will be increased feature velocity and a happier, more engaged team. Chances are, you’ll end up with some performance benefits along the way. (You know &lt;a href=&quot;http://www.fastcompany.com/1825005/how-one-second-could-cost-amazon-16-billion-sales&quot;&gt;how important performance is to your users&lt;/a&gt;, right?)&lt;/p&gt;
+&lt;p&gt;Your development team already knows exactly where and how to invest this time.&lt;/p&gt;
+&lt;h3 id=&quot;but-software-isn-t-really-like-finance-right-&quot;&gt;But software isn’t really like finance, right?&lt;/h3&gt;
+&lt;p&gt;Well, the analogy gets a lot more real when you recall that you pay your developers with money.&lt;/p&gt;
+&lt;p&gt;If you increase the pace of your feature development today beyond a sustainable level, you will impact the future productivity of your team. You can regain that productivity either by lessening the pace of feature development or buying more development capacity. The former costs you money by lessening the ROI of your wage bill. The latter costs you money by, well, costing you money.&lt;/p&gt;
+&lt;p&gt;I hear your inner accountant stirring. Before you start looking up your current benchmark &lt;a href=&quot;https://en.wikipedia.org/wiki/Internal_rate_of_return&quot;&gt;IRR&lt;/a&gt; and calculating &lt;a href=&quot;https://en.wikipedia.org/wiki/Net_present_value&quot;&gt;NPV&lt;/a&gt;, though, the economists need to have their turn. As always, there are &lt;a href=&quot;https://en.wikipedia.org/wiki/Externality&quot;&gt;externalities&lt;/a&gt; to be considered.&lt;/p&gt;
+&lt;p&gt;The entire time this situation is going on, your product is slower, buggier and less stable than it needs to be. That’s a very difficult thing to price.&lt;/p&gt;
+&lt;p&gt;Finally, you can only grow your team so large before it becomes &lt;a href=&quot;https://en.wikipedia.org/wiki/Diminishing_returns&quot;&gt;unwieldy and unproductive&lt;/a&gt;. You can only pile so many band-aids on top of one another before the whole tower comes &lt;a href=&quot;https://en.wikipedia.org/wiki/Cyclomatic_complexity&quot;&gt;toppling over&lt;/a&gt;. Eventually, the bank will become concerned about your capacity to repay and will make a &lt;a href=&quot;https://en.wikipedia.org/wiki/Margin_%28finance%29#Margin_call&quot;&gt;margin call&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The key things to keep in mind are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The principal must be repaid.&lt;/li&gt;
+&lt;li&gt;The interest compounds.&lt;/li&gt;
+&lt;li&gt;Don’t let yourself be surprised by that margin call.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     <item>
       <title>Benefits of Service Oriented Architectures</title>
       <link>http://blog.prismatik.com.au/articles/soa/</link>
