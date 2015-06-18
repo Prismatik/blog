@@ -5,9 +5,29 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Thu, 04 Jun 2015 10:00:00 +1000</pubDate>
+    <pubDate>Thu, 18 Jun 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>What wasm means for the industry</title>
+      <link>http://blog.prismatik.com.au/articles/what-wasm-means-for-the-industry/</link>
+      <pubDate>Thu, 18 Jun 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/what-wasm-means-for-the-industry/</guid>
+      <author></author>
+      <description>&lt;p&gt;It’s a red letter day for the web! Brendan Eich has &lt;a href=&quot;https://brendaneich.com/2015/06/from-asm-js-to-webassembly/&quot;&gt;announced&lt;/a&gt; that the major browser developers are working towards a standard called &lt;a href=&quot;https://github.com/WebAssembly/design/blob/master/HighLevelGoals.md&quot;&gt;WebAssembly&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;the-web-is-already-_amazing_-&quot;&gt;The web is already &lt;em&gt;amazing&lt;/em&gt;.&lt;/h3&gt;
+&lt;p&gt;We can deploy a single codebase to every &lt;a href=&quot;https://wiki.apache.org/cordova/PlatformSupport&quot;&gt;major&lt;/a&gt; &lt;a href=&quot;https://github.com/nwjs/nw.js/wiki/How-to-package-and-distribute-your-apps#windows&quot;&gt;platform&lt;/a&gt;. We can deliver &lt;a href=&quot;http://diveintohtml5.info/offline.html&quot;&gt;offline&lt;/a&gt; experiences that incorporate seamless &lt;a href=&quot;http://pouchdb.com/&quot;&gt;syncing&lt;/a&gt; and updating. We can create &lt;a href=&quot;https://github.com/rtc-io/rtc-mesh&quot;&gt;distributed peer-to-peer topologies&lt;/a&gt;. We can do &lt;a href=&quot;https://talky.io/&quot;&gt;audio and video chat&lt;/a&gt;. We can do rich &lt;a href=&quot;https://www.youtube.com/watch?v=XsyogXtyU9o&quot;&gt;3D graphics&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://prismatik.com.au/&quot;&gt;Prismatik&lt;/a&gt; is a polyglot consultancy. People bring us problems, we often solve those problems with computers. When we do, we pick The Right Tool for the job. The vast majority of the time, that ends up involving the web. The web has become such an incredible application platform in recent years that it’s impossible to ignore it. &lt;/p&gt;
+&lt;p&gt;Until now, building for the web has meant building in Javascript. We love JS. It’s a much more impressive language than many people give it credit for. &lt;a href=&quot;https://nodejs.org/&quot;&gt;NodeJS&lt;/a&gt; allows us to write the same language on both ends of the wire, unlocking great stuff like &lt;a href=&quot;http://isomorphic.net/libraries&quot;&gt;isomorphic frameworks&lt;/a&gt; and portability of library code.&lt;/p&gt;
+&lt;p&gt;What if it wasn’t just JS, though? Wouldn’t it be great to write whatever language you like and deploy to the web? Maybe this particular product makes more sense in Go. Maybe Lua, Elixir, Rust, Ruby, OCaml… pick your poison. WebAssembly (wasm) lays the foundation for making that a reality.&lt;/p&gt;
+&lt;h3 id=&quot;but-can-t-you-already-do-that-&quot;&gt;But can’t you already do that?&lt;/h3&gt;
+&lt;p&gt;Well, &lt;em&gt;kinda&lt;/em&gt;. You could already use &lt;a href=&quot;http://kripken.github.io/emscripten-site/&quot;&gt;emscripten&lt;/a&gt; to compile &lt;a href=&quot;http://llvm.org/&quot;&gt;LLVM&lt;/a&gt; code into &lt;a href=&quot;http://asmjs.org/&quot;&gt;asm.js&lt;/a&gt;. Some browsers had specific optimisation for asm.js code, making it &lt;a href=&quot;http://kripken.github.io/misc-js-benchmarks/banana/benchmark.html&quot;&gt;pretty dang snappy&lt;/a&gt;! While it worked, it was still a hack at heart. Asm.js and the emscripten pipeline was a fantastic proof of concept. It made us realise that this kind of thing was not only desirable, but feasible.&lt;/p&gt;
+&lt;p&gt;The path laid out is that asm.js will effectively be paralleled and then superseded by wasm. The fact that it will no longer be based on Javascript means that we can evolve the capabilities of wasm without being bound by backwards compatibility with JS. That is &lt;em&gt;exciting&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;There’s still work to do. Language X will still need to support wasm as a compilation target (although if it’s already got a path to llvm, most of the work might already be done). To make it useful, there will need to be a way to call and manipulate the DOM. A reliable, planned standard will greatly encourage that work to occur.&lt;/p&gt;
+&lt;p&gt;tl:dr, maybe we’ll see an isomorphic web framework in every major language. That would be &lt;em&gt;incredible&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Always bet on the web.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Technical Debt</title>
       <link>http://blog.prismatik.com.au/articles/technical-debt/</link>
