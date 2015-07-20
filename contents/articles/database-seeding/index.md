@@ -40,4 +40,4 @@ Some psuedo code...
 * Parse the string now all the substitutions are done
 * Pass your string into the relevant .create() methods
 
-Ultimately I'm pretty happy with the solution as it's fairly simplistic (just uses find and replace) and keeps ally my seed data including relationships in my json file!
+Ultimately I'm pretty happy with the solution as it's fairly simplistic (just uses find and replace) and keeps all my seed data including relationships in my json file!
