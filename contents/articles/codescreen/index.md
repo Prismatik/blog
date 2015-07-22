@@ -16,7 +16,7 @@ Having someone produce fibonacci numbers on a whiteboard is horrible. It's a com
 
 A better approach is to let someone complete a code screen task in their own time, on their own laptop, in their own home.
 
-To help with this, we've developed a super simple git server. We ask our candidates not to spend more than 30 minutes on the problem. That gives us a fair basis on which to compare candidates. It also respects our applicants by setting a reasonable cap on the amount of unpaid labour they may feel compelled to do.
+To help with this, we've developed a super simple git server. We ask our candidates to spend no more than 30 minutes on the problem. That gives us a fair basis on which to compare candidates. It also respects our applicants by setting a reasonable cap on the amount of unpaid labour they may feel compelled to do.
 
 A candidate checks out a git repository from a unique URL. They read their challenge in the README contained in the repo. They write their solution using whatever tools they like, just like they would at work. When they're done making commits, they push their repo back. We take note of how long they spent on the challenge.
 
