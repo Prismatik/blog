@@ -1,7 +1,7 @@
 ---
 title: Codescreen
 author: davidbanham
-date: 2015-06-04
+date: 2015-07-22
 template: article.jade
 blurb: A better way to screen candidates
 ---
