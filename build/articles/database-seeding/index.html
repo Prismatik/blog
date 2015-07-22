@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Review Apps and Database Seeding - The Prismatik Blog
+    </title>
+    <link rel="alternate" href="http://blog.prismatik.com.au/feed.xml" type="application/rss+xml" title="Things we find interesting.">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/hamburger.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container-wider"><a href="http://prismatik.com.au">
+            <div class="logo">prismatik</div></a>
+          <ul class="u-pull-right no-mobile"><a href="http://prismatik.com.au/">
+              <li class="nav-item"><span>HOME</span></li></a><a href="/">
+              <li class="nav-item selected"><span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+              <li class="nav-item"><span>CONTACT</span></li></a></ul><a class="mobile-nav u-pull-right no-desktop">
+            <div id="menu-btn" class="menu-btn vert">
+              <div></div><span></span><span></span><span></span>
+            </div></a>
+          <div class="responsive-menu">
+            <ul><a href="http://prismatik.com.au/">
+                <li class="nav-item"><span>MAIN SITE</span></li></a><a href="/">
+                <li class="nav-item selected"><span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+                <li class="nav-item"><span>CONTACT</span></li></a></ul>
+          </div>
+        </div>
+      </header>
+      <div id="content">
+        <div class="container">
+          <div class="article-header">
+            <h1>Review Apps and Database Seeding</h1>
+          </div>
+          <article class="article">
+            <section class="article-content"><p>For our feature development we use <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">Feature Branching</a> workflow. The tl:dr&nbsp;is:</p>
+<ul>
+<li>We create a separate branch for each new feature we work&nbsp;on. </li>
+<li>Once the feature is complete we create a&nbsp;<span class="caps">PR</span>.</li>
+<li>We then get this peer reviewed (by another developer) before&nbsp;merging.</li>
+<li>We update the branch based on any feedback we&nbsp;received.</li>
+<li>Finally merge the <span class="caps">PR</span> into master (master should always be&nbsp;production-ready).</li>
+</ul>
+<p>This can make it tricky to conduct user/client testing. Two options you have&nbsp;are…</p>
+<ul>
+<li>Merge all the features into master at the end of an iteration, push to staging and then request the client does their testing. This means the client doesn’t see any features until the end of an iteration. It also somewhat pollutes <code>master</code> since you can’t call a feature production ready until the client/<span class="caps">UAT</span> have signed&nbsp;off.</li>
+<li>Push to a staging server from within your feature branch <strong>before</strong> you merge into master. The client can then test each feature independently, which is great! Once they sign off, that branch can then be merged into master. The caveat is that it makes it difficult to test multiple branches concurrently. Developers must collaborate to know who’s currently using the staging environment for their pet feature. You often end up with multiple staging environments to reduce this&nbsp;contention.</li>
+</ul>
+<p>Wouldn’t it be great if each feature branch could have its own private staging environment? Enter Heroku with <a href="https://devcenter.heroku.com/articles/github-integration-review-apps">Review Apps</a>!</p>
+<p>Review Apps allows you to easily spin up a completely seperate app for any <span class="caps">PR</span> you’ve created on github! This is a big step forward as it allows each feature to be tested completely independently. Only once it is given the OK by the client is it merged into&nbsp;master.</p>
+<p>A gotcha here is that you don’t want each of these apps to share the same database. If your feature contains a schema change you’re going to have a bad&nbsp;time.</p>
+<p>The ideal state is to have a separate database for each <span class="caps">PR</span> app. For this to work we need to seed some data into the database for the client to use. At a bare minimum we’d need to create user accounts so the client can actually login to test! This lead me down the path of looking into a solution to re-seed our database every time we spin up a new PR&nbsp;app.</p>
+<p>To give this some&nbsp;context…</p>
+<ul>
+<li>This is a nodeJS&nbsp;codebase</li>
+<li>The project uses Mongo as the database and Mongoose as the database&nbsp;interface</li>
+<li>The data structure is actually fairly relational, despite using a document&nbsp;database</li>
+<li>I’ll use the example of a customer model that has many users to illustrate the&nbsp;problem</li>
+</ul>
+<p>Seeding a database is a relatively trivial task. All you need to do is create a bunch of dummy data that conforms to your schema. The only challenging aspect of this is the relationships that exist between the models. The legacy code we had in place to seed the database was written within several javascript files that are executed when starting the app if the database is&nbsp;fresh.</p>
+<p>There were two aspects I didn’t like about the existing implementation. Firstly, it seemed overly complex in the way it handled relationships. Child models were being created within the callback of the parent model. Secondly, there was no separation between the dummy data we were seeding and the javascipt code that created this data (the data was stored inline within the javascript&nbsp;files).</p>
+<p>My first thought was to store all the data we wanted to seed in json format. This way the data itself doesn’t contain any code, it’s reasonably easy to read by humans and is fairly trivial to change. As mentioned we use Mongoose to connect to our database, and this allows you to create models in bulk by passing an array of objects into a .create() method so it just needs to read the json and pass it to the Mongoose method for that&nbsp;model.</p>
+<p>The challenge was in how to define the relationships. Originally I thought these couldn’t be stored in json file so went down the path of codifying the relationships. i.e. we create a “customer” first, then to create the users, we read the users in the json file, append the customer id to every user object and then pass these to .create(). This felt gross as the json data was not then representative of the final model state. I really didn’t want the relationships only defined within my&nbsp;code.</p>
+<p>One of my colleagues, <a href="https://github.com/moll">Andri</a>, then suggested that you can just define the id within the json file. Mongoose allows you to define the id (_id) for an object rather than allowing it to generate one. Since relationships in Mongoose are just a string conforming to a docId, you can then just populate all their relationships manually. This was a great suggestion as it avoids needing to “codeify” any of the relationships. I literally threw out half the code I had written. (I challenge you to find a better feeling than a commit that has negative <span class="caps">LOC</span>). The only downside to this approach is with Mongo the ids are a 24 character hex string (A-F, 0-9 characters only). Seeing that a user is a child of customer “a000000000000000000000001” was not the level of readability I was aiming&nbsp;for.</p>
+<p>It then occured to me, why not do a simple substitution using some placeholders for my ids? In the json file if I have a customer named “Simon’s Brewery”, I can define an id of $Simon’s-Brewery$. Then for all the user models I can also define their customer<em>id as $Simon’s-Brewery$. Then, all I need to do within the code is generate a valid mongo id, and replace all instances of $Simon’s-Brewery$ with the mongo id before I seed the database. This gives me a nicely readable json file that defines my relationships _and</em> keeps relationship definitions completely out of my code. I’ve used $text-here$ as the format for my mongo id placeholders but you could use any format you want if you can find it with a&nbsp;regex.</p>
+<p>Some psuedo&nbsp;code…</p>
+<ul>
+<li>Read the json file (don’t use require as this parses the json&nbsp;file!)</li>
+<li>Find all the placeholders within the&nbsp;file.</li>
+<li>Filter the placeholders to just unique&nbsp;placeholders</li>
+<li>Generate a mongo id for each unique&nbsp;placeholder</li>
+<li>Substitute each placeholder with the mongo id you created for it (the same mongo id will be assigned to all placeholders with the same&nbsp;name)</li>
+<li>Parse the string now all the substitutions are&nbsp;done</li>
+<li>Pass your string into the relevant .create()&nbsp;methods</li>
+</ul>
+<p>Ultimately I’m pretty happy with the solution as it’s fairly simplistic (just uses find and replace) and keeps all my seed data including relationships in my json file! This also allows developers to update the seed data file any time they change the data structure without updating any code. The final piece of the puzzle is to write some code to auto-create a new database each time we spin up a <span class="caps">PR</span> app and then seed this data into it. For this I’ll need to take a closer look at the Mongolab API but that is a story for another&nbsp;day…</p>
+</section>
+          </article>
+          <div class="author-block author-text">
+            <h5><em>About The Author</em></h5>
+            <div class="row">
+              <div class="four columns"><span class="author"><a href="/articles/database-seeding/"><img src="https://s.gravatar.com/avatar/9e93d0d931bb9c71462cf2d6cd72082f?s=200" class="author"></a></span>
+              </div>
+              <div class="eight columns">
+                <h4>Simon Taylor</h4>
+                <p>Full-time Coder, Full-time Nerd</p>
+              </div>
+            </div>
+          </div>
+          <div class="back"><a href="/">
+              <h6>« Back to Blog</h6></a></div>
+          <div class="comments">
+            <div id="disqus_thread">
+              <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'prismatik';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="container"><a href="http://prismatik.com.au">
+            <div class="logo white">prismatik</div></a>
+          <div class="row">
+            <div class="seven columns">
+              <section class="about"><p><a href="https://prismatik.com.au">Prismatik</a> helps passionate people build great software and businesses. We could help you do that too! <a href="https://prismatik.com.au/contact/">Get in touch</a></p>
+
+              </section>
+            </div>
+            <div class="five columns hide-small"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          </div>
+          <div class="row show-small small-socials"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://twitter.com/theprismatik">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          <section class="copy">&copy; 2015 Prismatik</section>
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-48545690-3', 'auto');
+            ga('send', 'pageview');
+          </script>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
