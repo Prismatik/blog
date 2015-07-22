@@ -5,9 +5,29 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Thu, 18 Jun 2015 10:00:00 +1000</pubDate>
+    <pubDate>Wed, 22 Jul 2015 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Codescreen</title>
+      <link>http://blog.prismatik.com.au/articles/codescreen/</link>
+      <pubDate>Wed, 22 Jul 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/codescreen/</guid>
+      <author></author>
+      <description>&lt;p&gt;Many pixels have burned out discussing how terrible technical interviews are for everyone involved. At Prismatik, that’s part of our strength. Recruiting, retaining and managing the best software developers is &lt;em&gt;really hard&lt;/em&gt;. The fact that we’re excellent at doing that is our point of differentiation.&lt;/p&gt;
+&lt;p&gt;A critical part of a technical interview is to answer the question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Can this person actually write code?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Having someone produce fibonacci numbers on a whiteboard is horrible. It’s a completely alien environment for starters. Your text editor/IDE, language and API documentation, Google, Stack Overflow, etc are all tools of trade. It’s like asking a carpenter to frame a wall with nothing but a big rock. Next, you’re probably not in the business of selling fibonacci numbers. Anything complex enough to be relevant to your business is probably too much for a whiteboard.&lt;/p&gt;
+&lt;p&gt;A better approach is to let someone complete a code screen task in their own time, on their own laptop, in their own home.&lt;/p&gt;
+&lt;p&gt;To help with this, we’ve developed a super simple git server. We ask our candidates to spend no more than 30 minutes on the problem. That gives us a fair basis on which to compare candidates. It also respects our applicants by setting a reasonable cap on the amount of unpaid labour they may feel compelled to do.&lt;/p&gt;
+&lt;p&gt;A candidate checks out a git repository from a unique URL. They read their challenge in the README contained in the repo. They write their solution using whatever tools they like, just like they would at work. When they’re done making commits, they push their repo back. We take note of how long they spent on the challenge.&lt;/p&gt;
+&lt;p&gt;They can push multiple times if they forgot something and there’s no hard time limit. We’re interested in assessing skills, not thinning the herd with gotchas.&lt;/p&gt;
+&lt;p&gt;If you’re interested in using our tool, check it out here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Prismatik/codescreen&quot;&gt;https://github.com/Prismatik/codescreen&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>What wasm means for the industry</title>
       <link>http://blog.prismatik.com.au/articles/what-wasm-means-for-the-industry/</link>
@@ -26,26 +46,6 @@
 &lt;p&gt;There’s still work to do. Language X will still need to support wasm as a compilation target (although if it’s already got a path to llvm, most of the work might already be done). To make it useful, there will need to be a way to call and manipulate the DOM. A reliable, planned standard will greatly encourage that work to occur.&lt;/p&gt;
 &lt;p&gt;tl:dr, maybe we’ll see an isomorphic web framework in every major language. That would be &lt;em&gt;incredible&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Always bet on the web.&lt;/p&gt;
-</description>
-    </item>
-    <item>
-      <title>Codescreen</title>
-      <link>http://blog.prismatik.com.au/articles/codescreen/</link>
-      <pubDate>Thu, 04 Jun 2015 10:00:00 +1000</pubDate>
-      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/codescreen/</guid>
-      <author></author>
-      <description>&lt;p&gt;Many pixels have burned out discussing how terrible technical interviews are for everyone involved. At Prismatik, that’s part of our strength. Recruiting, retaining and managing the best software developers is &lt;em&gt;really hard&lt;/em&gt;. The fact that we’re excellent at doing that is our point of differentiation.&lt;/p&gt;
-&lt;p&gt;A critical part of a technical interview is to answer the question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Can this person actually write code?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Having someone produce fibonacci numbers on a whiteboard is horrible. It’s a completely alien environment for starters. Your text editor/IDE, language and API documentation, Google, Stack Overflow, etc are all tools of trade. It’s like asking a carpenter to frame a wall with nothing but a big rock. Next, you’re probably not in the business of selling fibonacci numbers. Anything complex enough to be relevant to your business is probably too much for a whiteboard.&lt;/p&gt;
-&lt;p&gt;A better approach is to let someone complete a code screen task in their own time, on their own laptop, in their own home.&lt;/p&gt;
-&lt;p&gt;To help with this, we’ve developed a super simple git server. We ask our candidates not to spend more than 30 minutes on the problem. That gives us a fair basis on which to compare candidates. It also respects our applicants by setting a reasonable cap on the amount of unpaid labour they may feel compelled to do.&lt;/p&gt;
-&lt;p&gt;A candidate checks out a git repository from a unique URL. They read their challenge in the README contained in the repo. They write their solution using whatever tools they like, just like they would at work. When they’re done making commits, they push their repo back. We take note of how long they spent on the challenge.&lt;/p&gt;
-&lt;p&gt;They can push multiple times if they forgot something and there’s no hard time limit. We’re interested in assessing skills, not thinning the herd with gotchas.&lt;/p&gt;
-&lt;p&gt;If you’re interested in using our tool, check it out here:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/Prismatik/codescreen&quot;&gt;https://github.com/Prismatik/codescreen&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
