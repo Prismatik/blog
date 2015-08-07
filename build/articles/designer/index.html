@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>The Prismatik Blog
+    <title>Designer - The Prismatik Blog
     </title>
     <link rel="alternate" href="http://blog.prismatik.com.au/feed.xml" type="application/rss+xml" title="Things we find interesting.">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -35,47 +35,57 @@
       </header>
       <div id="content">
         <div class="container">
-          <section class="archive">
-            <h2>Archive</h2>
-            <ul>
-              <li><span style="line-height:17.6em" class="year-label">2015</span>
-                <ul style="margin-left:4em">
-                  <li><span style="line-height:2.2em" class="month-label">August</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/designer/">Designer</a></li>
-                    </ul>
-                  </li>
-                  <li><span style="line-height:4.4em" class="month-label">July</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/codescreen/">Codescreen</a></li>
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/database-seeding/">Review Apps and Database Seeding</a></li>
-                    </ul>
-                  </li>
-                  <li><span style="line-height:4.4em" class="month-label">June</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/what-wasm-means-for-the-industry/">What wasm means for the industry</a></li>
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/technical-debt/">Technical Debt</a></li>
-                    </ul>
-                  </li>
-                  <li><span style="line-height:2.2em" class="month-label">May</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/soa/">Benefits of Service Oriented Architectures</a></li>
-                    </ul>
-                  </li>
-                  <li><span style="line-height:2.2em" class="month-label">April</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/guide-to-the-sydney-startup-community/">8 Lists To Get You Started In The Sydney Startup Community</a></li>
-                    </ul>
-                  </li>
-                  <li><span style="line-height:2.2em" class="month-label">March</span>
-                    <ul style="margin-left:7em">
-                      <li style="height:2.2em;line-height:2.2em;"><a href="/articles/hello-world/">Hello World</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </section>
+          <div class="article-header">
+            <h1>Designer</h1>
+          </div>
+          <article class="article">
+            <section class="article-content"><p>One of the lovely properties of CouchDB is that it treats code as data. The kinds of things that other databases do with schemas and indexes, Couch does with design documents. These are stored in the database alongside your&nbsp;data.</p>
+<p>Nirvana is when you can start your application and have the database look and behave exactly the way it expects. Manually setting up a database and schema before you point an application at it is both error prone and&nbsp;boring.</p>
+<p>With something like Postgres (which we love, btw), this typically gets handled with migrations. A database-wide version is stored, and you say things&nbsp;like:</p>
+<blockquote>
+<p>“In order to move from version 4 to version 5, run these <span class="caps">ALTER</span> TABLE&nbsp;statements.”</p>
+</blockquote>
+<p>In CouchDB, the equivalent is to <span class="caps">PUT</span> some design documents that describe the views/etc you want to exist. You don’t express migrations in the sense&nbsp;of</p>
+<blockquote>
+<p>“Here is the set of actions required to transform this&nbsp;thing.”</p>
+</blockquote>
+<p>but&nbsp;rather:</p>
+<blockquote>
+<p>“This is the way I expect this thing to be. Make it&nbsp;so.”</p>
+</blockquote>
+<p>It’s more declarative than imperative, which I think is a lovely&nbsp;thing.</p>
+<p>You want to make sure that if what you’re trying to <span class="caps">PUT</span> supersedes what’s already there, that it overwrites the existing doc. On the other hand, you want to be sure that out of date versions of your application don’t overwrite your shiny new design documents with their&nbsp;rubbish.</p>
+<p>I found myself writing the code to do the above job in multiple different applications. <a href="https://github.com/Prismatik/designer">Designer</a> is a nodeJS library that handles the job for&nbsp;you.</p>
+</section>
+          </article>
+          <div class="author-block author-text">
+            <h5><em>About The Author</em></h5>
+            <div class="row">
+              <div class="four columns"><span class="author"><a href="/articles/designer/"><img src="https://s.gravatar.com/avatar/c8056ef89cc5e85963802bcd5d22ff0b?s=200" class="author"></a></span>
+              </div>
+              <div class="eight columns">
+                <h4>David Banham</h4>
+                <p>Prismatik's CTO.</p>
+              </div>
+            </div>
+          </div>
+          <div class="back"><a href="/">
+              <h6>« Back to Blog</h6></a></div>
+          <div class="comments">
+            <div id="disqus_thread">
+              <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'prismatik';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+          </div>
         </div>
       </div>
       <footer>
