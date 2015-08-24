@@ -7,12 +7,12 @@ blurb: Ways to gather the right intel.
 ---
 
 The discovery phase of a project is both daunting and exciting. It is where
-project goals are moulded from the clay of a scope document, into tangible
+project goals are moulded from the clay of a scope document into tangible
 milestones that will be reached in the near future. Here we validate
 the _why_ of all the things and have the choice of a myriad of different
 methods available to tickle out the right information which will help you
 solve the directional puzzle that is the discovery phase. I recently stared
-down the barrel of this phase with and saw it as a great opportunity to get my
+down the barrel of this phase and saw it as a great opportunity to get my
 hands dirty with some practices I'd never tried before.
 
 The goal of this article is to provide a high level summary of methods we use
@@ -25,8 +25,8 @@ provide links as I go on what I found useful if you'd like to learn more.
 First we start with personas; a way to model and summarize known and suggested
 assumptions you make about the intended users of your product. They allow you
 to build empathy with your users and help keep a frame of reference when
-designing and building features. We work through personas with the client -
-at least two for each user type — and knuckle down what personas will be
+designing and building features. We work through personas with the client --
+at least two for each user type -- and knuckle down what personas will be
 relevant for the first phase of the project. These are undoubtedly the corner
 pieces of your puzzle.
 
@@ -54,7 +54,7 @@ the topic and I'd recommend you give it a read.
 In the beginning you may need to make assumptions about how resources might be
 modelled. These loose ends can be tightened up during the discovery phase as
 you revisit your schemas in an iterative fashion. It's important to ensure that
-your API is a source of truth for the project, as any issues with your API will
+your API is a source of truth for the project. Any issues with your API will
 amplify tenfold further down the road with your application logic. You don't
 want that. We use [Heroku's PRMD tool](https://github.com/interagent/prmd) to
 generate API docs.
@@ -75,18 +75,18 @@ flows (because our drawing skills are mad good brah) and
 [Balsamiq](https://balsamiq.com).
 
 ### Prototype
-We arrive at our final delivery; We have toyed with the idea of delivering UX
-documents and/or complete site experiences; Though a prototype feels like the
-right thing to place in your client's hands. Client's don’t _read_ their product;
-they _use_ their product. Creating something usable is a good way to summarise
-all of the previous methods undertaken and makes for a powerful presentation
-when you can step your client through the journey of using their product. A
-prototype nicely laces up decisions and rationale and a strong focus should be
-made on content hierarchy and page/feature composition. There are different
-levels of complexities for prototypes; they can range from a simple point and
-click wireframe adventure, to something that entails feature functionality. The
-decision depends on the project, time and budget available; Recently we
-created a prototype using
+We arrive at out final deliver. We've done a lot of thinking about whether it's
+better to deliver UX documents and/or complete site experiences. We've landed
+on placing a prototype in our client's hands as the best thing. Client's don't
+_read_ their product; they _use_ their product. Creating something usable is a
+good way to summarise all of the previous methods undertaken and makes for a
+powerful presentation when you can step your client through the journey of
+using their product. A prototype nicely laces up decisions and rationale and a
+strong focus should be made on content hierarchy and page/feature composition.
+There are different levels of complexities for prototypes; they can range from
+a simple point and click wireframe adventure, to something that entails feature
+functionality. The decision depends on the project, time and budget available;
+Recently we created a prototype using
 [Google's Material Design Lite](https://github.com/google/material-design-lite)
 and this got the job done nicely.
 
