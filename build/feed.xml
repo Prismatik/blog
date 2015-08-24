@@ -21,6 +21,31 @@
 </description>
     </item>
     <item>
+      <title>Designer</title>
+      <link>http://blog.prismatik.com.au/articles/designer/</link>
+      <pubDate>Fri, 07  Aug 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/designer/</guid>
+      <author></author>
+      <description>&lt;p&gt;One of the lovely properties of CouchDB is that it treats code as data. The kinds of things that other databases do with schemas and indexes, Couch does with design documents. These are stored in the database alongside your data.&lt;/p&gt;
+&lt;p&gt;Nirvana is when you can start your application and have the database look and behave exactly the way it expects. Manually setting up a database and schema before you point an application at it is both error prone and boring.&lt;/p&gt;
+&lt;p&gt;With something like Postgres (which we love, btw), this typically gets handled with migrations. A database-wide version is stored, and you say things like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“In order to move from version 4 to version 5, run these ALTER TABLE statements.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In CouchDB, the equivalent is to PUT some design documents that describe the views/etc you want to exist. You don’t express migrations in the sense of&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Here is the set of actions required to transform this thing.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;but rather:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“This is the way I expect this thing to be. Make it so.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It’s more declarative than imperative, which I think is a lovely thing.&lt;/p&gt;
+&lt;p&gt;You want to make sure that if what you’re trying to PUT supersedes what’s already there, that it overwrites the existing doc. On the other hand, you want to be sure that out of date versions of your application don’t overwrite your shiny new design documents with their rubbish.&lt;/p&gt;
+&lt;p&gt;I found myself writing the code to do the above job in multiple different applications. &lt;a href=&quot;https://github.com/Prismatik/designer&quot;&gt;Designer&lt;/a&gt; is a nodeJS library that handles the job for you.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Codescreen</title>
       <link>http://blog.prismatik.com.au/articles/codescreen/</link>
       <pubDate>Wed, 22 Jul 2015 10:00:00 +1000</pubDate>
