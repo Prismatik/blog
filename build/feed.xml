@@ -9,6 +9,93 @@
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>A Journey Of Discovery</title>
+      <link>http://blog.prismatik.com.au/articles/a-journey-of-discovery/</link>
+      <pubDate>Thu, 20  Aug 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/a-journey-of-discovery/</guid>
+      <author></author>
+      <description>&lt;p&gt;The discovery phase of a project is both daunting and exciting. It is where
+project goals are moulded from the clay of a scope document into tangible
+milestones that will be reached in the near future. Here we validate
+the &lt;em&gt;why&lt;/em&gt; of all the things and have the choice of a myriad of different
+methods available to tickle out the right information which will help you
+solve the directional puzzle that is the discovery phase. I recently stared
+down the barrel of this phase and saw it as a great opportunity to get my
+hands dirty with some practices I’d never tried before.&lt;/p&gt;
+&lt;p&gt;The goal of this article is to provide a high level summary of methods we use
+here at Prismatik to home in on the core essentials we need to kick off a
+build process. There are plenty of helpful articles out there that explain each
+method in more detail, so I’ll only be taking a shallow dive into each and
+provide links as I go on what I found useful if you’d like to learn more.&lt;/p&gt;
+&lt;h3 id=&quot;personas&quot;&gt;Personas&lt;/h3&gt;
+&lt;p&gt;First we start with personas; a way to model and summarize known and suggested
+assumptions you make about the intended users of your product. They allow you
+to build empathy with your users and help keep a frame of reference when
+designing and building features. We work through personas with the client –
+at least two for each user type – and knuckle down what personas will be
+relevant for the first phase of the project. These are undoubtedly the corner
+pieces of your puzzle.&lt;/p&gt;
+&lt;h3 id=&quot;user-stories&quot;&gt;User stories&lt;/h3&gt;
+&lt;p&gt;Next we move on to user stories; a breakdown of each task a user can accomplish
+within the product experience. Personas slot comfortably into your user stories
+as the &lt;em&gt;role&lt;/em&gt; of the story. User stories help remind the team of user
+motivations and most importantly, why a user wants to do things.&lt;/p&gt;
+&lt;p&gt;One aspect of the user stories we have recently introduced into our work flow
+are &lt;em&gt;acceptance criterias&lt;/em&gt;. These define what checks off the user story as
+complete as long as the criteria is met. They can also be used to help develop
+story tasks, and subsequently used later during QA (double bonus!). We use
+&lt;a href=&quot;https://taiga.io&quot;&gt;Taiga&lt;/a&gt; for managing user stories and have found it to be a
+great addition to our tool belt.&lt;/p&gt;
+&lt;h3 id=&quot;api&quot;&gt;API&lt;/h3&gt;
+&lt;p&gt;We’ve arrived in API land; all of us are big fans of
+&lt;a href=&quot;http://json-schema.org&quot;&gt;JSON Schema&lt;/a&gt; here at Prismatik and modelling your
+resources with well defined schemas is a solid start. Our chief geek
+&lt;a href=&quot;https://twitter.com/davidbanham&quot;&gt;David Banham&lt;/a&gt; has given an
+&lt;a href=&quot;http://slides.davidbanham.com/little_schema&quot;&gt;insightful presentation&lt;/a&gt; on
+the topic and I’d recommend you give it a read.&lt;/p&gt;
+&lt;p&gt;In the beginning you may need to make assumptions about how resources might be
+modelled. These loose ends can be tightened up during the discovery phase as
+you revisit your schemas in an iterative fashion. It’s important to ensure that
+your API is a source of truth for the project. Any issues with your API will
+amplify tenfold further down the road with your application logic. You don’t
+want that. We use &lt;a href=&quot;https://github.com/interagent/prmd&quot;&gt;Heroku’s PRMD tool&lt;/a&gt; to
+generate API docs.&lt;/p&gt;
+&lt;h3 id=&quot;user-flows&quot;&gt;User flows&lt;/h3&gt;
+&lt;p&gt;Now for something more visual; a representation of the user’s flow to complete
+tasks within the product. User flows are represented from the user’s
+perspective and should clearly identify each step taken. Concise and granular
+works best — some user flows can be wickedly long — as this helps to keep
+actions on point and make them digestible for discussion and improvement.
+Creating user flows is a great method to work in sync with your client. The
+visualisation of these flows helps everyone provide a rationale as to why a
+user should be doing things to achieve things, and it becomes clear uberfast if
+there are holes in the process, or superfluous actions being mapped for a user
+that don’t tie in with your project goals. We use a combination of
+&lt;a href=&quot;https://signalvnoise.com/posts/1926-a-shorthand-for-designing-ui-flows&quot;&gt;hand sketched&lt;/a&gt;
+flows (because our drawing skills are mad good brah) and
+&lt;a href=&quot;https://balsamiq.com&quot;&gt;Balsamiq&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;prototype&quot;&gt;Prototype&lt;/h3&gt;
+&lt;p&gt;We arrive at out final deliver. We’ve done a lot of thinking about whether it’s
+better to deliver UX documents and/or complete site experiences. We’ve landed
+on placing a prototype in our client’s hands as the best thing. Client’s don’t
+&lt;em&gt;read&lt;/em&gt; their product; they &lt;em&gt;use&lt;/em&gt; their product. Creating something usable is a
+good way to summarise all of the previous methods undertaken and makes for a
+powerful presentation when you can step your client through the journey of
+using their product. A prototype nicely laces up decisions and rationale and a
+strong focus should be made on content hierarchy and page/feature composition.
+There are different levels of complexities for prototypes; they can range from
+a simple point and click wireframe adventure, to something that entails feature
+functionality. The decision depends on the project, time and budget available;
+Recently we created a prototype using
+&lt;a href=&quot;https://github.com/google/material-design-lite&quot;&gt;Google’s Material Design Lite&lt;/a&gt;
+and this got the job done nicely.&lt;/p&gt;
+&lt;p&gt;Trying new and different discovery methods for projects is something to be
+encouraged as each project presents a unique set of challenges. Hopefully by
+diving further into some of the above, it might seem a little less daunting and
+may inspire you to develop and tweak your own work flow to find the right fit.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Rails Girls</title>
       <link>http://blog.prismatik.com.au/articles/railsgirls/</link>
       <pubDate>Thu, 20  Aug 2015 10:00:00 +1000</pubDate>
@@ -75,7 +162,7 @@
 &lt;p&gt;My first thought was to store all the data we wanted to seed in json format. This way the data itself doesn’t contain any code, it’s reasonably easy to read by humans and is fairly trivial to change. As mentioned we use Mongoose to connect to our database, and this allows you to create models in bulk by passing an array of objects into a .create() method so it just needs to read the json and pass it to the Mongoose method for that model.&lt;/p&gt;
 &lt;p&gt;The challenge was in how to define the relationships. Originally I thought these couldn’t be stored in json file so went down the path of codifying the relationships. i.e. we create a “customer” first, then to create the users, we read the users in the json file, append the customer id to every user object and then pass these to .create(). This felt gross as the json data was not then representative of the final model state. I really didn’t want the relationships only defined within my code.&lt;/p&gt;
 &lt;p&gt;One of my colleagues, &lt;a href=&quot;https://github.com/moll&quot;&gt;Andri&lt;/a&gt;, then suggested that you can just define the id within the json file. Mongoose allows you to define the id (_id) for an object rather than allowing it to generate one. Since relationships in Mongoose are just a string conforming to a docId, you can then just populate all their relationships manually. This was a great suggestion as it avoids needing to “codeify” any of the relationships. I literally threw out half the code I had written. (I challenge you to find a better feeling than a commit that has negative LOC). The only downside to this approach is with Mongo the ids are a 24 character hex string (A-F, 0-9 characters only). Seeing that a user is a child of customer “a000000000000000000000001” was not the level of readability I was aiming for.&lt;/p&gt;
-&lt;p&gt;It then occured to me, why not do a simple substitution using some placeholders for my ids? In the json file if I have a customer named “Simon’s Brewery”, I can define an id of $Simon’s-Brewery$. Then for all the user models I can also define their customer&lt;em&gt;id as $Simon’s-Brewery$. Then, all I need to do within the code is generate a valid mongo id, and replace all instances of $Simon’s-Brewery$ with the mongo id before I seed the database. This gives me a nicely readable json file that defines my relationships _and&lt;/em&gt; keeps relationship definitions completely out of my code. I’ve used $text-here$ as the format for my mongo id placeholders but you could use any format you want if you can find it with a regex.&lt;/p&gt;
+&lt;p&gt;It then occured to me, why not do a simple substitution using some placeholders for my ids? In the json file if I have a customer named “Simon’s Brewery”, I can define an id of $Simon’s-Brewery$. Then for all the user models I can also define their customer_id as $Simon’s-Brewery$. Then, all I need to do within the code is generate a valid mongo id, and replace all instances of $Simon’s-Brewery$ with the mongo id before I seed the database. This gives me a nicely readable json file that defines my relationships &lt;em&gt;and&lt;/em&gt; keeps relationship definitions completely out of my code. I’ve used $text-here$ as the format for my mongo id placeholders but you could use any format you want if you can find it with a regex.&lt;/p&gt;
 &lt;p&gt;Some psuedo code…&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Read the json file (don’t use require as this parses the json file!)&lt;/li&gt;
@@ -147,7 +234,7 @@
       <author></author>
       <description>&lt;p&gt;At Prismatik our core technical principle is:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;h3 id=&quot;use-the-right-tool-for-the-job-&quot;&gt;Use the right tool for the job.&lt;/h3&gt;
+&lt;p&gt;###Use the right tool for the job.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;One of the things this results in is how we architect applications. For a lot of the things we build, a service oriented architecture (SOA) is a great choice.&lt;/p&gt;
 &lt;p&gt;Step one in building an SOA is to separate your application into concerns. For example, authentication of users and gamification of user actions are two different things. In a traditional monolithic architecture, these would probably be lumped into one process.&lt;/p&gt;
