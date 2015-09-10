@@ -14,7 +14,7 @@ The biggest advantage of vim is your typing speed once you master its shortcuts.
 
 This is achieved by switching between vim’s different “modes”. In insert mode the user can edit text as they would in any other editor, but by pressing escape, they can switch to “normal” mode. In “normal” mode, all keys are remapped to perform different functions. “J” moves down, “K” moves up, “H” moves left, “L” moves right etc… At any time you can press the “i” key they can switch back to insert mode.
 
-Vim also has some other amazing shortcuts that available in “normal” mode that greatly increase your editing efficiency. There are too many of these to list in few but some examples of what you can do purely with the A-Z keys in 1-2 key strokes, jump forward or backward a word at a time, jump to the start or end of the line, delete a whole word, delete an entire row, page/up down, jump to a specific line number and the list goes on… These same shortcuts exist in other editors, but because the A-Z keys are always bound to input the relevant letter, the shortcuts are far more awkward and require you to hold control / alt or command and press another key. In vim you simply change to “normal" mode and all your A-Z keys now become your shortcuts, no modifier keys required (mostly!).
+Vim also has some other amazing shortcuts that are available in “normal” mode which greatly increase your editing efficiency. There are too many of these to list, but here are some examples of what you can do purely with the A-Z keys in 1-2 key strokes, jump forward or backward a word at a time, jump to the start or end of the line, delete a whole word, delete an entire row, page/up down, jump to a specific line number and the list goes on… These same shortcuts exist in other editors, but because the A-Z keys are always bound to input the relevant letter, the shortcuts are far more awkward and require you to hold control / alt or command and press another key. In vim you simply change to “normal" mode and all your A-Z keys now become your shortcuts, no modifier keys required (mostly!).
 
 Another advantage of vim occurs when you need to ssh into a remote machine. Almost every machine you access will have vim already installed. You can be right at home with the editor you're used to and edit files on the remote server with ease. This might seem like a small thing but it’s certainly not if you need to do this often. You can of course learn vim and only use it when editing files on remote servers, but it reduces the cognitive load to not have to mentally switch between different editors shortcuts. It is possible to get Atom and Sublime working on a remote server but it is not as natural as just opening a file within terminal.
 
@@ -55,9 +55,9 @@ That depends.
 
 If you're new to programming don't learn vim. Learning to code is hard enough without making life difficult for yourself. Atom and Sublime have a much lower barrier to entry.
 
-If you plan on making a career in writing words on computers, it makes sense to invest in your tools. The extra efficiency you gain will really add up over the course of 30 years.
-
 Do you want the fastest possible text editing? and can you afford to be inefficient at coding for at least a month, more likely two? If the answer to these two questions is yes then I would suggest taking the plunge.
+
+If you plan on making a career in writing words on computers, it makes sense to invest in your tools. The extra efficiency you gain will really add up over the course of 30 years.
 
 ### Anything else?
 
