@@ -5,9 +5,24 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Mon, 07 Sep 2015 10:00:00 +1000</pubDate>
+    <pubDate>Fri, 11 Mar 2016 11:00:00 +1100</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Start with the problem, not the solution</title>
+      <link>http://blog.prismatik.com.au/articles/start-with-the-problem/</link>
+      <pubDate>Fri, 11 Mar 2016 11:00:00 +1100</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/start-with-the-problem/</guid>
+      <author></author>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;The key measure of success for the design phase is lack of surprises&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;System design is an accepted part of software development, and it only takes one bad experience of developing a project without a design to cement the worth of a design-first philosophy. A common mistake made by teams adopting a design-first philosophy is attempting to solve all of the problems which have been uncovered during the system design phase. Although the goal is admirable, this sort of thinking can result in a number of negative effects for both the product and the team.&lt;/p&gt;
+&lt;p&gt;The most important part of the system design phase is to uncover future problems; fixing them is a secondary concern. Many of the most costly mistakes made during software development occur when a previously unforeseen problem is discovered. By this stage, previous development has often either removed many of the options that would solve the problem, else adopting the solution would invalidate previous development efforts. This can be avoided when developers and designers have prior knowledge of the problems which will ultimately require solutions, allowing them to take these into account throughout the development process.&lt;/p&gt;
+&lt;p&gt;This does not mean that a problem can be completely ignored once it has been identified. The best-case scenario is for these issues to be solved prior to development, but this is often not practical. A reasonable outcome for unsolvable problems is a range of proposed solutions ideated for each problem, without firmly deciding on one. Having this list of solutions makes it easier to assess the future impact of a given solution, and easier to map to it and discuss it. By the time that it comes to actually develop the solution for the original unsolved problem, it will have been considered multiple times and from multiple angles as part of other development decisions, and the solution will become apparent far more easily and naturally.&lt;/p&gt;
+&lt;p&gt;The key measure of success for the design phase is lack of surprises and less unforeseen problems occurring during development. Yes, it is lovely to have a system that is perfectly mapped out with all problems solved at the start, but that is impractical for most projects, and impossible for many. Trying to achieve the impossible in the design phase will quickly stymie the creativity of both designers and developers, leading to a bad outcome for everyone.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Learning Vim in 2015</title>
       <link>http://blog.prismatik.com.au/articles/learning-vim-in-2015/</link>
@@ -70,8 +85,8 @@ provide links as I go on what I found useful if you’d like to learn more.&lt;/
 &lt;p&gt;First we start with personas; a way to model and summarize known and suggested
 assumptions you make about the intended users of your product. They allow you
 to build empathy with your users and help keep a frame of reference when
-designing and building features. We work through personas with the client —
-at least two for each user type — and knuckle down what personas will be
+designing and building features. We work through personas with the client –
+at least two for each user type – and knuckle down what personas will be
 relevant for the first phase of the project. These are undoubtedly the corner
 pieces of your puzzle.&lt;/p&gt;
 &lt;h3 id=&quot;user-stories&quot;&gt;User stories&lt;/h3&gt;
@@ -201,7 +216,7 @@ may inspire you to develop and tweak your own work flow to find the right fit.&l
 &lt;p&gt;My first thought was to store all the data we wanted to seed in json format. This way the data itself doesn’t contain any code, it’s reasonably easy to read by humans and is fairly trivial to change. As mentioned we use Mongoose to connect to our database, and this allows you to create models in bulk by passing an array of objects into a .create() method so it just needs to read the json and pass it to the Mongoose method for that model.&lt;/p&gt;
 &lt;p&gt;The challenge was in how to define the relationships. Originally I thought these couldn’t be stored in json file so went down the path of codifying the relationships. i.e. we create a “customer” first, then to create the users, we read the users in the json file, append the customer id to every user object and then pass these to .create(). This felt gross as the json data was not then representative of the final model state. I really didn’t want the relationships only defined within my code.&lt;/p&gt;
 &lt;p&gt;One of my colleagues, &lt;a href=&quot;https://github.com/moll&quot;&gt;Andri&lt;/a&gt;, then suggested that you can just define the id within the json file. Mongoose allows you to define the id (_id) for an object rather than allowing it to generate one. Since relationships in Mongoose are just a string conforming to a docId, you can then just populate all their relationships manually. This was a great suggestion as it avoids needing to “codeify” any of the relationships. I literally threw out half the code I had written. (I challenge you to find a better feeling than a commit that has negative LOC). The only downside to this approach is with Mongo the ids are a 24 character hex string (A-F, 0-9 characters only). Seeing that a user is a child of customer “a000000000000000000000001” was not the level of readability I was aiming for.&lt;/p&gt;
-&lt;p&gt;It then occured to me, why not do a simple substitution using some placeholders for my ids? In the json file if I have a customer named “Simon’s Brewery”, I can define an id of $Simon’s-Brewery$. Then for all the user models I can also define their customer&lt;em&gt;id as $Simon’s-Brewery$. Then, all I need to do within the code is generate a valid mongo id, and replace all instances of $Simon’s-Brewery$ with the mongo id before I seed the database. This gives me a nicely readable json file that defines my relationships _and&lt;/em&gt; keeps relationship definitions completely out of my code. I’ve used $text-here$ as the format for my mongo id placeholders but you could use any format you want if you can find it with a regex.&lt;/p&gt;
+&lt;p&gt;It then occured to me, why not do a simple substitution using some placeholders for my ids? In the json file if I have a customer named “Simon’s Brewery”, I can define an id of $Simon’s-Brewery$. Then for all the user models I can also define their customer_id as $Simon’s-Brewery$. Then, all I need to do within the code is generate a valid mongo id, and replace all instances of $Simon’s-Brewery$ with the mongo id before I seed the database. This gives me a nicely readable json file that defines my relationships &lt;em&gt;and&lt;/em&gt; keeps relationship definitions completely out of my code. I’ve used $text-here$ as the format for my mongo id placeholders but you could use any format you want if you can find it with a regex.&lt;/p&gt;
 &lt;p&gt;Some psuedo code…&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Read the json file (don’t use require as this parses the json file!)&lt;/li&gt;
@@ -273,7 +288,7 @@ may inspire you to develop and tweak your own work flow to find the right fit.&l
       <author></author>
       <description>&lt;p&gt;At Prismatik our core technical principle is:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;h3 id=&quot;use-the-right-tool-for-the-job-&quot;&gt;Use the right tool for the job.&lt;/h3&gt;
+&lt;p&gt;###Use the right tool for the job.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;One of the things this results in is how we architect applications. For a lot of the things we build, a service oriented architecture (SOA) is a great choice.&lt;/p&gt;
 &lt;p&gt;Step one in building an SOA is to separate your application into concerns. For example, authentication of users and gamification of user actions are two different things. In a traditional monolithic architecture, these would probably be lumped into one process.&lt;/p&gt;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>What wasm means for the industry - The Prismatik Blog
+    <title>Start with the problem, not the solution - The Prismatik Blog
     </title>
     <link rel="alternate" href="http://blog.prismatik.com.au/feed.xml" type="application/rss+xml" title="Things we find interesting.">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -36,31 +36,26 @@
       <div id="content">
         <div class="container">
           <div class="article-header">
-            <h1>What wasm means for the industry</h1>
+            <h1>Start with the problem, not the solution</h1>
           </div>
           <article class="article">
-            <section class="article-content"><p>It’s a red letter day for the web! Brendan Eich has <a href="https://brendaneich.com/2015/06/from-asm-js-to-webassembly/">announced</a> that the major browser developers are working towards a standard called <a href="https://github.com/WebAssembly/design/blob/master/HighLevelGoals.md">WebAssembly</a>.</p>
-<h3 id="the-web-is-already-_amazing_-">The web is already <em>amazing</em>.</h3>
-<p>We can deploy a single codebase to every <a href="https://wiki.apache.org/cordova/PlatformSupport">major</a> <a href="https://github.com/nwjs/nw.js/wiki/How-to-package-and-distribute-your-apps#windows">platform</a>. We can deliver <a href="http://diveintohtml5.info/offline.html">offline</a> experiences that incorporate seamless <a href="http://pouchdb.com/">syncing</a> and updating. We can create <a href="https://github.com/rtc-io/rtc-mesh">distributed peer-to-peer topologies</a>. We can do <a href="https://talky.io/">audio and video chat</a>. We can do rich <a href="https://www.youtube.com/watch?v=XsyogXtyU9o">3D graphics</a>.</p>
-<p><a href="http://prismatik.com.au/">Prismatik</a> is a polyglot consultancy. People bring us problems, we often solve those problems with computers. When we do, we pick The Right Tool for the job. The vast majority of the time, that ends up involving the web. The web has become such an incredible application platform in recent years that it’s impossible to ignore&nbsp;it. </p>
-<p>Until now, building for the web has meant building in Javascript. We love <span class="caps">JS</span>. It’s a much more impressive language than many people give it credit for. <a href="https://nodejs.org/">NodeJS</a> allows us to write the same language on both ends of the wire, unlocking great stuff like <a href="http://isomorphic.net/libraries">isomorphic frameworks</a> and portability of library&nbsp;code.</p>
-<p>What if it wasn’t just <span class="caps">JS</span>, though? Wouldn’t it be great to write whatever language you like and deploy to the web? Maybe this particular product makes more sense in Go. Maybe Lua, Elixir, Rust, Ruby, OCaml… pick your poison. WebAssembly (wasm) lays the foundation for making that a&nbsp;reality.</p>
-<h3 id="but-can-t-you-already-do-that-">But can’t you already do&nbsp;that?</h3>
-<p>Well, <em>kinda</em>. You could already use <a href="http://kripken.github.io/emscripten-site/">emscripten</a> to compile <a href="http://llvm.org/"><span class="caps">LLVM</span></a> code into <a href="http://asmjs.org/">asm.js</a>. Some browsers had specific optimisation for asm.js code, making it <a href="http://kripken.github.io/misc-js-benchmarks/banana/benchmark.html">pretty dang snappy</a>! While it worked, it was still a hack at heart. Asm.js and the emscripten pipeline was a fantastic proof of concept. It made us realise that this kind of thing was not only desirable, but&nbsp;feasible.</p>
-<p>The path laid out is that asm.js will effectively be paralleled and then superseded by wasm. The fact that it will no longer be based on Javascript means that we can evolve the capabilities of wasm without being bound by backwards compatibility with <span class="caps">JS</span>. That is <em>exciting</em>.</p>
-<p>There’s still work to do. Language X will still need to support wasm as a compilation target (although if it’s already got a path to llvm, most of the work might already be done). To make it useful, there will need to be a way to call and manipulate the <span class="caps">DOM</span>. A reliable, planned standard will greatly encourage that work to&nbsp;occur.</p>
-<p>tl:dr, maybe we’ll see an isomorphic web framework in every major language. That would be <em>incredible</em>.</p>
-<p>Always bet on the&nbsp;web.</p>
+            <section class="article-content"><blockquote>
+<p>The key measure of success for the design phase is lack of&nbsp;surprises</p>
+</blockquote>
+<p>System design is an accepted part of software development, and it only takes one bad experience of developing a project without a design to cement the worth of a design-first philosophy. A common mistake made by teams adopting a design-first philosophy is attempting to solve all of the problems which have been uncovered during the system design phase. Although the goal is admirable, this sort of thinking can result in a number of negative effects for both the product and the&nbsp;team.</p>
+<p>The most important part of the system design phase is to uncover future problems; fixing them is a secondary concern. Many of the most costly mistakes made during software development occur when a previously unforeseen problem is discovered. By this stage, previous development has often either removed many of the options that would solve the problem, else adopting the solution would invalidate previous development efforts. This can be avoided when developers and designers have prior knowledge of the problems which will ultimately require solutions, allowing them to take these into account throughout the development&nbsp;process.</p>
+<p>This does not mean that a problem can be completely ignored once it has been identified. The best-case scenario is for these issues to be solved prior to development, but this is often not practical. A reasonable outcome for unsolvable problems is a range of proposed solutions ideated for each problem, without firmly deciding on one. Having this list of solutions makes it easier to assess the future impact of a given solution, and easier to map to it and discuss it. By the time that it comes to actually develop the solution for the original unsolved problem, it will have been considered multiple times and from multiple angles as part of other development decisions, and the solution will become apparent far more easily and&nbsp;naturally.</p>
+<p>The key measure of success for the design phase is lack of surprises and less unforeseen problems occurring during development. Yes, it is lovely to have a system that is perfectly mapped out with all problems solved at the start, but that is impractical for most projects, and impossible for many. Trying to achieve the impossible in the design phase will quickly stymie the creativity of both designers and developers, leading to a bad outcome for&nbsp;everyone.</p>
 </section>
           </article>
           <div class="author-block author-text">
             <h5> <em>About The Author</em></h5>
             <div class="row">
-              <div class="four columns"><span class="author"><a href="/articles/what-wasm-means-for-the-industry/"><img src="https://s.gravatar.com/avatar/c8056ef89cc5e85963802bcd5d22ff0b?s=200" class="author"></a></span>
+              <div class="four columns"><span class="author"><a href="/articles/start-with-the-problem/"><img src="https://s.gravatar.com/avatar/5a7ec1436f5957c56be7393857cb0ddc?s=200" class="author"></a></span>
               </div>
               <div class="eight columns">
-                <h4>David Banham</h4>
-                <p>Prismatik's CTO.</p>
+                <h4>Samuel Anderson</h4>
+                <p>Systems design engineer</p>
               </div>
             </div>
           </div>
