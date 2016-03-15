@@ -6,9 +6,9 @@ template: article.jade
 blurb: How to setup Vim to use code snippets!
 ---
 
-Last week a colleague of mine who was watching me code asked me, why don't you use snippets? It was a very good question but I'd just never given much thought to the repetition involved in writing code. The more I thought about it, the more I thought how many times have I written out the same `describe` or `it` block in mocha, defined a function or typed console.log! The answer? Far far too often. Setting up snippets is well worth the effort as the time saving in the long term will be pretty huge.
+Last week a colleague of mine who was watching me code asked me; "why don't you use snippets"? It was a very good question but I'd just never given much thought to the repetition involved in writing code. The more I thought about it, the more I thought how many times have I written out the same `describe` or `it` block in mocha, defined a function or typed console.log! The answer? Far far too often. Setting up snippets is well worth the effort as the time saving in the long term will be pretty huge.
 
-So over the last couple of days I've spent some time investigating how to get snippets up and running in vim and also configuring them. Here's how to get it up and running in your vim...
+So over the last couple of days I've spent some time investigating how to get snippets up and running in vim and also configuring them. Here's how it's done on OS X:
 
 ### Prerequisites
 
@@ -67,7 +67,7 @@ As I said above, I wouldn't recommend installing the `vim-snippets` plugin, but 
 
 There's plenty more complexity here if you want to dive in. UltiSnip supports much more complex snippets, python interpolation can be used to achieve some fairly advanced snippets. I found a great snippet for requiring modules in node.js [here](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db#.53n8qt3p6). This gives you some idea of much more powerful snippets you can write. I found this [wiki page](http://wiki.yangleo.me/2013/10/29/write-UltiSnips-snippets.html) to be a useful resource in writing snippets that's less verbose than the UltiSnips docs.
 
-Finally I definitely recommend backing up your snippets! Snippets live in your `~/.vim/UltiSnips` folder. I suggest replacing this path with a symlink or similar and storing your snippet files somewhere else that you regularly back up, like you're hopefully doing with your dotfiles.
+Finally I definitely recommend backing up your snippets! Snippets live in your `~/.vim/UltiSnips` folder. I suggest replacing this path with a symlink or similar and storing your snippet files somewhere else that you regularly back up, like you're hopefully doing with your dotfiles. A great idea is to keep them in git and make them public so that others can learn your tricks.
 
 
 ### Javascript and YouCompleteMe
@@ -82,7 +82,7 @@ RuntimeError: Warning: Unable to detect a .tern-project file in the hierarchy be
 You can either do this with...
 
 1. a `.tern-project` file in each of your project directories.
-2. create a `.tern-config` file in your home directory `~/`
+2. a `.tern-config` file in your home directory `~/`
 
 This file configures the tern engine so it knows what type of javascript you are coding in and therefore what autocomplete options are available, refer [tern config](https://github.com/Valloric/YouCompleteMe#javascript-semantic-completion) for what to put in the file. I just used the sample node.js config provided in the docs.
 ---
