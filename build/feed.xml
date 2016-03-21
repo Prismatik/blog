@@ -5,9 +5,69 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Fri, 11 Mar 2016 11:00:00 +1100</pubDate>
+    <pubDate>Tue, 15 Mar 2016 11:00:00 +1100</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Snippets in Vim</title>
+      <link>http://blog.prismatik.com.au/articles/vim-snippets/</link>
+      <pubDate>Tue, 15 Mar 2016 11:00:00 +1100</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/vim-snippets/</guid>
+      <author></author>
+      <description>&lt;p&gt;Last week a colleague of mine who was watching me code asked me; “why don’t you use snippets”? It was a very good question but I’d just never given much thought to the repetition involved in writing code. The more I thought about it, the more I thought how many times have I written out the same &lt;code&gt;describe&lt;/code&gt; or &lt;code&gt;it&lt;/code&gt; block in mocha, defined a function or typed console.log! The answer? Far far too often. Setting up snippets is well worth the effort as the time saving in the long term will be pretty huge.&lt;/p&gt;
+&lt;p&gt;So over the last couple of days I’ve spent some time investigating how to get snippets up and running in vim and also configuring them. Here’s how it’s done on OS X:&lt;/p&gt;
+&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Homebrew installed (required to compile YouCompleteMe)&lt;/li&gt;
+&lt;li&gt;A vim plugin manager, vundle, pathogen etc…&lt;/li&gt;
+&lt;li&gt;Some cursory vim knowledge, i.e. how to make changes to your .vimrc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;setup-snippets-in-vim&quot;&gt;Setup Snippets in Vim&lt;/h3&gt;
+&lt;p&gt;Step 1 - Install the &lt;a href=&quot;https://github.com/Valloric/YouCompleteMe&quot;&gt;YouCompleteMe&lt;/a&gt; plugin (YCM).
+YCM is a code completion engine for vim that will provide autocomplete suggestions as you type based on the language you are coding in. Installation of the plugin itself is fairly straight forward just note you must compile the plugin based on the languages you intend to use YCM for, refer to the documentation on github.&lt;/p&gt;
+&lt;p&gt;It’s not actually clear from the documentation whether YCM is a requirement to use snippets (the UltiSnips plugin). In any case, I recommend installing YCM as the autocomplete it provides is fantastic and it detects snippets you’ve configured to list in the autocomplete box as well.&lt;/p&gt;
+&lt;p&gt;Step 2 - Install the &lt;a href=&quot;https://github.com/SirVer/ultisnips&quot;&gt;UltiSnip&lt;/a&gt; vim plugin. You should now have the ability to start creating snippets. The installation guide recommends a &lt;code&gt;vim-snippets&lt;/code&gt; plugin which comes with a bunch of snippets out of the box, but I would recommend not installing that as it contains snippets for a wide variety of different languages, many of which you’ll probably never use.&lt;/p&gt;
+&lt;p&gt;Step 3 - Configure the shortcuts for UltiSnips. UltiSnips needs three shortcuts to function, expand snippet, jump forward, jump backward. Expand snippet converts your abbreviation into the full snippet, and jump forward and backward let you cycle through the different inputs you’ve configured in the snippet itself. Add the below three lines to your &lt;code&gt;.vimrc&lt;/code&gt; changing the keybindings as appropriate (the below is my config). Do not bind expand to &lt;code&gt;&amp;lt;tab&amp;gt;&lt;/code&gt; as this conflicts with YCM.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let g:UltiSnipsExpandTrigger=&amp;quot;&amp;lt;c-s&amp;gt;&amp;quot;
+let g:UltiSnipsJumpForwardTrigger=&amp;quot;&amp;lt;c-j&amp;gt;&amp;quot;
+let g:UltiSnipsJumpBackwardTrigger=&amp;quot;&amp;lt;c-k&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Step 4 - Add some snippets!&lt;/p&gt;
+&lt;p&gt;Snippets are very easy to add, simply open a file in vim that is associated with the language you want to create snippets for, i.e. a &lt;code&gt;.js&lt;/code&gt; file for javascript and type &lt;code&gt;:UltiSnipsEdit&lt;/code&gt;. This will open the snippets file where you can start to add snippets.&lt;/p&gt;
+&lt;p&gt;Snippets are really easy to add! Below is an example…&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;snippet fn &amp;quot;function&amp;quot; b
+function ${1:functionName}(${2:arguements}) {
+    $0
+}
+endsnippet
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Lets walk through the syntax.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;snippet&lt;/code&gt; - the start of your snippet&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fn&lt;/code&gt; - the trigger word for your snippet. Type &lt;code&gt;fn&lt;/code&gt; in insert mode, and then press your expand shortcut to substitute it with the full snippet (&lt;code&gt;control + s&lt;/code&gt; in my case).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;function&amp;quot;&lt;/code&gt; - a description of the snippet, visible in YCM’s menu.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b&lt;/code&gt; - best to &lt;a href=&quot;https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt#L665&quot;&gt;read the docs&lt;/a&gt; for this, but essentially snippet only expands if it is the first characters on a new line i.e. &lt;code&gt;fn&lt;/code&gt; cannot have any preceeding text, tabs and spaces are ok though!&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;${1:functionName}&lt;/code&gt; - the first piece of text in the snippet the user can customize, defaults to “functionName”. After pressing your jump forward shortcut (&lt;code&gt;control + j&lt;/code&gt; in my case) the first time, this is the text you will be able to edit.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;${2:arguements}&lt;/code&gt;  - the second piece of text in the snippet the user can customize, defaults to “functionName”.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$0&lt;/code&gt; - where the cursor will end up after you’re done editing the snippet text (after you’ve pressed the jump forward shortcut three times)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;endsnippet&lt;/code&gt; - the end of your snippet text.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: you can also just use &lt;code&gt;$1&lt;/code&gt;, &lt;code&gt;$2&lt;/code&gt; etc… if you want to insert text in your snippet but don’t need a placeholder.&lt;/p&gt;
+&lt;p&gt;That’s pretty much it, your snippets are immediately available to use.&lt;/p&gt;
+&lt;h3 id=&quot;what-else-&quot;&gt;What else?&lt;/h3&gt;
+&lt;p&gt;As I said above, I wouldn’t recommend installing the &lt;code&gt;vim-snippets&lt;/code&gt; plugin, but that doesn’t mean it doesn’t have lots of great stuff. I’d recommend copying, pasting and then tweaking the snippets that are useful to you. Just checkout the &lt;a href=&quot;https://github.com/honza/vim-snippets/tree/master/UltiSnips&quot;&gt;github repo&lt;/a&gt; and copy what looks useful to you.&lt;/p&gt;
+&lt;p&gt;There’s plenty more complexity here if you want to dive in. UltiSnip supports much more complex snippets, python interpolation can be used to achieve some fairly advanced snippets. I found a great snippet for requiring modules in node.js &lt;a href=&quot;https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db#.53n8qt3p6&quot;&gt;here&lt;/a&gt;. This gives you some idea of much more powerful snippets you can write. I found this &lt;a href=&quot;http://wiki.yangleo.me/2013/10/29/write-UltiSnips-snippets.html&quot;&gt;wiki page&lt;/a&gt; to be a useful resource in writing snippets that’s less verbose than the UltiSnips docs.&lt;/p&gt;
+&lt;p&gt;Finally I definitely recommend backing up your snippets! Snippets live in your &lt;code&gt;~/.vim/UltiSnips&lt;/code&gt; folder. I suggest replacing this path with a symlink or similar and storing your snippet files somewhere else that you regularly back up, like you’re hopefully doing with your dotfiles. A great idea is to keep them in git and make them public so that others can learn your tricks.&lt;/p&gt;
+&lt;h3 id=&quot;javascript-and-youcompleteme&quot;&gt;Javascript and YouCompleteMe&lt;/h3&gt;
+&lt;p&gt;I had a bit of trouble getting YCM to work with javascript/node.js as a bit more configuration is required. To provide javascript autocomplete suggestions YCM uses &lt;a href=&quot;http://ternjs.net/&quot;&gt;Tern&lt;/a&gt; which is automatically installed via the compilation step assuming you used the javascript flag. But for tern to function it requires a configuration file.&lt;/p&gt;
+&lt;p&gt;Without this, you will get an error when opening a &lt;code&gt;.js&lt;/code&gt; file in vim along the lines of…&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RuntimeError: Warning: Unable to detect a .tern-project file in the hierarchy before /PATH-HERE and no global .tern-config file was found. This is required for accurate JavaScript completion. Please see the User Guide for details.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can either do this with…&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;a &lt;code&gt;.tern-project&lt;/code&gt; file in each of your project directories.&lt;/li&gt;
+&lt;li&gt;a &lt;code&gt;.tern-config&lt;/code&gt; file in your home directory &lt;code&gt;~/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;this-file-configures-the-tern-engine-so-it-knows-what-type-of-javascript-you-are-coding-in-and-therefore-what-autocomplete-options-are-available-refer-tern-config-https-github-com-valloric-youcompleteme-javascript-semantic-completion-for-what-to-put-in-the-file-i-just-used-the-sample-node-js-config-provided-in-the-docs-&quot;&gt;This file configures the tern engine so it knows what type of javascript you are coding in and therefore what autocomplete options are available, refer &lt;a href=&quot;https://github.com/Valloric/YouCompleteMe#javascript-semantic-completion&quot;&gt;tern config&lt;/a&gt; for what to put in the file. I just used the sample node.js config provided in the docs.&lt;/h2&gt;
+</description>
+    </item>
     <item>
       <title>Start with the problem, not the solution</title>
       <link>http://blog.prismatik.com.au/articles/start-with-the-problem/</link>
