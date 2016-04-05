@@ -203,3 +203,5 @@ Love & kisses. Nikolay
 
 PS: I'm really stocked about Node 6. Apparently a good half of the features that
 I need will graduate to be production ready. Plus thar be Proxies!
+
+*Originally hosted on: [nikolay.rocks](http://nikolay.rocks/2016-04-04-how-to-stop-babel).*
