@@ -5,9 +5,164 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Tue, 15 Mar 2016 11:00:00 +1100</pubDate>
+    <pubDate>Wed, 06 Apr 2016 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>How To Stop Babeling And Start Enjoying NodeJS</title>
+      <link>http://blog.prismatik.com.au/articles/stop-babeling-and-start-enjoying/</link>
+      <pubDate>Wed, 06 Apr 2016 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/stop-babeling-and-start-enjoying/</guid>
+      <author></author>
+      <description>&lt;p&gt;Like many of you, I had also been bitten by the &lt;a href=&quot;https://babeljs.io&quot;&gt;babeljs&lt;/a&gt;
+bug. The promise is actually pretty neat: have all the futuristic twinky dinkies
+right now and deploy them anywhere. Just jack in a &lt;code&gt;postinstall&lt;/code&gt; hook and it
+will be all magic and unicorns from there. Destructurning, async/await, default
+parameters all the really nice things will be just waiting to be used for good
+and awesome.&lt;/p&gt;
+&lt;p&gt;The truth is, I kind of grew cold to it. Babel is great and a really impressive
+piece of work, but, I feel like it robs me of what I really like about #nodejs;
+its simplicity and nimbleness. I always loved how fast node is. How easy it
+is to prototype with. You just &lt;code&gt;npm init&lt;/code&gt;, throw couple of packages together
+and you have a thing.&lt;/p&gt;
+&lt;h3 id=&quot;the-problem&quot;&gt;The Problem&lt;/h3&gt;
+&lt;p&gt;Babel touches pretty much every step of a development process in node. And being
+in this position it adds overhead to pretty much everything you do. Have source
+code? Now you have to compile it and add an extra thing to worry about in production.
+Have tests? Yeah, you need to figure how to stitch it together with your babel
+build pipes. Use eslint? You need the &lt;code&gt;babel-eslint&lt;/code&gt;, etc, etc.&lt;/p&gt;
+&lt;p&gt;And the problem grows like a snow ball. Now you have an extra thing attached
+to everything you do. And there are several ways to setup every one of them. Do
+we call it &lt;code&gt;npm run build&lt;/code&gt; or &lt;code&gt;npm run compile&lt;/code&gt;? Do we precompile things in dev
+or we use &lt;code&gt;babel-node&lt;/code&gt;? The list is goes on and on.&lt;/p&gt;
+&lt;p&gt;It got me thinking. What do I actually want from babel? Can I survive without
+those features? Which ones can I have without babel, like maybe with &lt;code&gt;--harmony&lt;/code&gt;
+flags? Turned out the answer was: “not that many”, “yes”, “most of them”.&lt;/p&gt;
+&lt;p&gt;Allow me to walk you through the cases.&lt;/p&gt;
+&lt;h3 id=&quot;block-scope-variables&quot;&gt;Block Scope Variables&lt;/h3&gt;
+&lt;p&gt;I really, really like the new &lt;code&gt;const&lt;/code&gt; and &lt;code&gt;let&lt;/code&gt; markers in #javascript #es6 edition.
+It is such a nice way to give yourself a hint what supposed to change and what’s
+not. Plus, being a block scope variable (or a constant) it allows the javascript
+engine to perform various optimizations on your code, and, potentially, save
+you from wicked bugs from var names leaking out of a scope.&lt;/p&gt;
+&lt;p&gt;Turned out, you can have it in NodeJS right now. Just add &lt;code&gt;&amp;quot;use strict&amp;quot;;&lt;/code&gt; on
+top of your file and it will handle block scope variables really nicely and
+efficiently. Or, if you’re too lazy for touching every file, just run your node
+like this &lt;code&gt;node --use_strict blah.js&lt;/code&gt; and it will force strict mode to all your
+files in the runtime. Which is the way I prefer to do it.&lt;/p&gt;
+&lt;p&gt;Interestingly enough, if you were sloppy and just jacked &lt;code&gt;es2015&lt;/code&gt; preset into
+your babel config, it will pretty much convert all your carefully marked consts
+and lets into good ol’ &lt;code&gt;var&lt;/code&gt;. In which case you will just delude yourself into
+thinking that you’re doing the right thing.&lt;/p&gt;
+&lt;h3 id=&quot;destructuring&quot;&gt;Destructuring&lt;/h3&gt;
+&lt;p&gt;Destructuring in ES6 is awesome. It has pretty much the same effect on your
+programming as pattern matching, but without you feeling smug about it. I would
+still prefer to have a real pattern matching engine in JavaScript some day, but
+right now it’s just about destructuring objects and arrays.&lt;/p&gt;
+&lt;p&gt;Turns out that node already has the &lt;code&gt;--harmony_destructuring&lt;/code&gt; flag available,
+which turns on the native support for destructuring operators. And if you think
+of it for a second, it is actually a much better option than doing it with
+babel. Because babel does it manually through javascript and harmony does it
+natively in C. So, it is much faster in node than in babel.&lt;/p&gt;
+&lt;h3 id=&quot;default-rest-params&quot;&gt;Default &amp;amp; Rest Params&lt;/h3&gt;
+&lt;p&gt;Being someone who flips between ruby and javascript all the time, I really find
+the default and rest params syntax useful. I liked it very much that babel allows
+me to be in a similar mindset between languages.&lt;/p&gt;
+&lt;p&gt;Well, actually, there are &lt;code&gt;--harmony_default_parameters&lt;/code&gt; and &lt;code&gt;--harmony_rest_parameters&lt;/code&gt;
+options in node right now that flip native support for those features. There
+is also &lt;code&gt;--harmony_spreadcalls&lt;/code&gt; to spread arrays into args when you call functions.&lt;/p&gt;
+&lt;p&gt;And the same argument goes for this as for the destructuring feature. Native
+support is much faster and more likely being carried over in its current
+implementation to the future versions than what is in babel.&lt;/p&gt;
+&lt;h3 id=&quot;spread-operators&quot;&gt;Spread Operators&lt;/h3&gt;
+&lt;p&gt;I really like spreads. Actually, recently, I become somewhat of an amateur
+artisan peanut butter maker. I freshly roast my peanuts, then use raw unprocessed
+honey and himalayan salt. So, good… (see what i did there?)&lt;/p&gt;
+&lt;p&gt;Either way, you can turn on native array spreads with the &lt;code&gt;--harmony_spread_arrays&lt;/code&gt;
+flag. As the name implies, at the moment, it only does arrays. But, you know what?
+I really don’t mind &lt;code&gt;Object.assign&lt;/code&gt;. More of that, I kind of like it, because unlike
+the spread operator, it doesn’t explode when one of the arguments is a &lt;code&gt;null&lt;/code&gt; or
+&lt;code&gt;undefined&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Plus, there are the harmony &lt;code&gt;rest_parameters&lt;/code&gt; and &lt;code&gt;spreadcalls&lt;/code&gt; that accompany
+the spreadness of the experience. So, you mostly can have native spreads right
+now.&lt;/p&gt;
+&lt;h3 id=&quot;async-await-and-stuff&quot;&gt;Async/Await and Stuff&lt;/h3&gt;
+&lt;p&gt;This was one of the primary driving forces behind me really wanting to jack
+babel in pretty much every project i’ve been working on. It makes it so much
+easier to deal with async control flow. It makes all your code more maintainable
+as well. And the best thing, you can mix it with pretty much anything that talks
+promises!&lt;/p&gt;
+&lt;p&gt;But, guess what. Babel, when set up properly, just converts all your async awaits
+into &lt;code&gt;function *() { yield }&lt;/code&gt;. You can have exactly all the same results right
+now with generators and &lt;code&gt;yields&lt;/code&gt;. It is mind bogglingly fast and production
+ready.&lt;/p&gt;
+&lt;p&gt;More of that, most of high profile libraries out there already support generators.
+Here for example #expressjs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;app.get(&lt;span class=&quot;string&quot;&gt;&quot;/users/:id&quot;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; *(&lt;span class=&quot;params&quot;&gt;req, res&lt;/span&gt;) &lt;/span&gt;{
+  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; user = &lt;span class=&quot;keyword&quot;&gt;yield&lt;/span&gt; User.find(req.params.id);
+  res.json(user);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is mochajs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;it(&lt;span class=&quot;string&quot;&gt;&quot;allows to access a user's data&quot;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; *(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{
+  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; response = &lt;span class=&quot;keyword&quot;&gt;yield&lt;/span&gt; server.get(&lt;span class=&quot;string&quot;&gt;&quot;/users/123&quot;&lt;/span&gt;);
+
+  expect(response.status).to.eql(&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);
+  expect(response.body).to.eql({id: &lt;span class=&quot;number&quot;&gt;123&lt;/span&gt;, username: &lt;span class=&quot;string&quot;&gt;&quot;nikolay&quot;&lt;/span&gt;});
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It works right now! More of that, unlike &lt;code&gt;async/await&lt;/code&gt;, the modern implementation
+of generators works with both promises and node style callbacks. Which means
+that you don’t need to drag around bluebird and promisify everything like a
+monkey:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; fs = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;fs&quot;&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; User = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;models/user&quot;&lt;/span&gt;);
+
+&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = &lt;span class=&quot;keyword&quot;&gt;yield&lt;/span&gt; fs.readFile(&lt;span class=&quot;string&quot;&gt;&quot;/blah&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// node style callback&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; user = &lt;span class=&quot;keyword&quot;&gt;yield&lt;/span&gt; User.find(&lt;span class=&quot;number&quot;&gt;123&lt;/span&gt;);  &lt;span class=&quot;comment&quot;&gt;// a promise from some ORM&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;More of that, yields are actually so much betterer than promises when things
+come to errors handling. Raise your hand if you were in a situation where
+someone forgot to add a &lt;code&gt;.catch&lt;/code&gt; section to a promise and all errors went unnoticed?
+Yeah, I think we’ve all been there. Doesn’t happen with generators.&lt;/p&gt;
+&lt;p&gt;And yet more of that, generators unlock other features that are a total pain in
+the butt with Promises. For example when you need to process a bunch of async tasks
+sequentially. Or, for example, try to write an async &lt;code&gt;while&lt;/code&gt; block in Promises.
+It is a lot of fun.&lt;/p&gt;
+&lt;p&gt;Just open your heart to generators, it will worth your while. After all Promises
+don’t go anywhere, you can mix and match them with generators too and have best
+of both worlds. But, you don’t need async/await to get there.&lt;/p&gt;
+&lt;h3 id=&quot;es6-module-imports-exports&quot;&gt;ES6 Module Imports/Exports&lt;/h3&gt;
+&lt;p&gt;You can’t have them in node at the moment. I know, a bummer. But, you know what?
+I’m okay with that. Destructuring gives me almost all the same thing:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; { blah, blah } = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;./blahs&quot;&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is not that far from&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; { blah, blah } &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;./blahs&quot;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Totally survivable and a good exchange for lack of overheads babel adds everywhere.&lt;/p&gt;
+&lt;h3 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;/h3&gt;
+&lt;p&gt;Recently I have converted several of my medium sized nodejs projects from babel
+to node+harmony. Surprisingly, the transition went really smoothly. Well, I had
+a good tests coverage in all of them to back me up. But, I was surprised how
+trivial it was and how much faster and more pleasant the projects become after
+the transition.&lt;/p&gt;
+&lt;p&gt;I know I’m off the hook now and I’m not doing back. I can have practically all the
+same things I have with babel in a fast native form directly in node. My
+dependencies list shrunk several times. Deployment become trivial — it’s just
+the good old &lt;code&gt;npm start&lt;/code&gt; now.&lt;/p&gt;
+&lt;p&gt;One thing though. All those harmonly flags is a bit of a drag to carry around. I
+really wish node had some sort of a &lt;code&gt;.noderc&lt;/code&gt; file where I could specify all those
+flags in one place and then just call plain &lt;code&gt;node blah.js&lt;/code&gt;. But, still it is
+a small price to pay for the returned agility and nimbleness of a pure nodejs
+project.&lt;/p&gt;
+&lt;p&gt;And that is pretty much all I have to say on the subject.&lt;/p&gt;
+&lt;p&gt;Love &amp;amp; kisses. Nikolay&lt;/p&gt;
+&lt;p&gt;PS: I’m really stocked about Node 6. Apparently a good half of the features that
+I need will graduate to be production ready. Plus thar be Proxies!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Originally hosted on: &lt;a href=&quot;http://nikolay.rocks/2016-04-04-how-to-stop-babel&quot;&gt;nikolay.rocks&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Snippets in Vim</title>
       <link>http://blog.prismatik.com.au/articles/vim-snippets/</link>
@@ -123,6 +278,18 @@ endsnippet
 </description>
     </item>
     <item>
+      <title>Rails Girls</title>
+      <link>http://blog.prismatik.com.au/articles/railsgirls/</link>
+      <pubDate>Thu, 20  Aug 2015 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/railsgirls/</guid>
+      <author></author>
+      <description>&lt;p&gt;Women are great technologists - particularly in innovative work - and despite a positive increase in the number of women in tech, they are &lt;a href=&quot;http://idbdocs.iadb.org/wsdocs/getdocument.aspx?docnum=38595127&quot;&gt;still highly under-represented&lt;/a&gt;. With shortages in the supply of trained professionals in technical disciplines and many good arguments about the &lt;a href=&quot;http://www.entrepreneur.com/article/240550&quot;&gt;benefits of diversity in the workplace&lt;/a&gt;, we are of the firm opinion that the tech industry as a whole would benefit from becoming more inclusive. We are committed to helping that change happen.&lt;/p&gt;
+&lt;p&gt;There are a lot of amazing humans that contribute to tech in many and varied ways, and those people are - and should be - of all genders, persuasions, skin colours, creeds and varieties. Sadly, though, it’s often much more difficult for people from under-represented groups to feel welcome and valued in tech. This is compounded by the fact that they often - although thankfully not always - have less access to the same opportunities.&lt;/p&gt;
+&lt;p&gt;The biggest challenges facing diversity in tech companies today aren’t that companies are not interested in hiring people from under-represented groups; but that companies’ selection criteria are subtly weighted against diversity, and their networks  don’t always naturally intersect with diverse groups. Hiring “the right person for the job” often becomes “the right person for the job right now”. That short-term bias acts against people from under-represented groups that have often had less encouragement, less access to opportunities and less valuable experience, yet whom - when given a chance - flourish into valuable employees. Employees who are not only very often great at their jobs, but more grateful and engaged than their majority-group compatriots.&lt;/p&gt;
+&lt;p&gt;We believe that wherever any of us sees an opportunity to make a positive change, we all benefit from taking that opportunity. To that end, we are very proud today to announce our platinum sponsorship of lunch at &lt;a href=&quot;http://railsgirls.com/sydney&quot;&gt;Rails Girls Sydney&lt;/a&gt;. Rails Girls is a fantastic community initiative aimed at getting women and girls involved in technology in a welcoming environment. We couldn’t be happier to be helping.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>A Journey Of Discovery</title>
       <link>http://blog.prismatik.com.au/articles/a-journey-of-discovery/</link>
       <pubDate>Thu, 20  Aug 2015 10:00:00 +1000</pubDate>
@@ -207,18 +374,6 @@ and this got the job done nicely.&lt;/p&gt;
 encouraged as each project presents a unique set of challenges. Hopefully by
 diving further into some of the above, it might seem a little less daunting and
 may inspire you to develop and tweak your own work flow to find the right fit.&lt;/p&gt;
-</description>
-    </item>
-    <item>
-      <title>Rails Girls</title>
-      <link>http://blog.prismatik.com.au/articles/railsgirls/</link>
-      <pubDate>Thu, 20  Aug 2015 10:00:00 +1000</pubDate>
-      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/railsgirls/</guid>
-      <author></author>
-      <description>&lt;p&gt;Women are great technologists - particularly in innovative work - and despite a positive increase in the number of women in tech, they are &lt;a href=&quot;http://idbdocs.iadb.org/wsdocs/getdocument.aspx?docnum=38595127&quot;&gt;still highly under-represented&lt;/a&gt;. With shortages in the supply of trained professionals in technical disciplines and many good arguments about the &lt;a href=&quot;http://www.entrepreneur.com/article/240550&quot;&gt;benefits of diversity in the workplace&lt;/a&gt;, we are of the firm opinion that the tech industry as a whole would benefit from becoming more inclusive. We are committed to helping that change happen.&lt;/p&gt;
-&lt;p&gt;There are a lot of amazing humans that contribute to tech in many and varied ways, and those people are - and should be - of all genders, persuasions, skin colours, creeds and varieties. Sadly, though, it’s often much more difficult for people from under-represented groups to feel welcome and valued in tech. This is compounded by the fact that they often - although thankfully not always - have less access to the same opportunities.&lt;/p&gt;
-&lt;p&gt;The biggest challenges facing diversity in tech companies today aren’t that companies are not interested in hiring people from under-represented groups; but that companies’ selection criteria are subtly weighted against diversity, and their networks  don’t always naturally intersect with diverse groups. Hiring “the right person for the job” often becomes “the right person for the job right now”. That short-term bias acts against people from under-represented groups that have often had less encouragement, less access to opportunities and less valuable experience, yet whom - when given a chance - flourish into valuable employees. Employees who are not only very often great at their jobs, but more grateful and engaged than their majority-group compatriots.&lt;/p&gt;
-&lt;p&gt;We believe that wherever any of us sees an opportunity to make a positive change, we all benefit from taking that opportunity. To that end, we are very proud today to announce our platinum sponsorship of lunch at &lt;a href=&quot;http://railsgirls.com/sydney&quot;&gt;Rails Girls Sydney&lt;/a&gt;. Rails Girls is a fantastic community initiative aimed at getting women and girls involved in technology in a welcoming environment. We couldn’t be happier to be helping.&lt;/p&gt;
 </description>
     </item>
     <item>

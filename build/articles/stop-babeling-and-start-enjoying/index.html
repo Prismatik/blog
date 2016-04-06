@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>How To Stop Babeling And Start Enjoying NodeJS - The Prismatik Blog
+    </title>
+    <link rel="alternate" href="http://blog.prismatik.com.au/feed.xml" type="application/rss+xml" title="Things we find interesting.">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/hamburger.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container-wider"><a href="http://prismatik.com.au">
+            <div class="logo">prismatik</div></a>
+          <ul class="u-pull-right no-mobile"><a href="http://prismatik.com.au/">
+              <li class="nav-item"> <span>HOME</span></li></a><a href="/">
+              <li class="nav-item selected"> <span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+              <li class="nav-item"> <span>CONTACT</span></li></a></ul><a class="mobile-nav u-pull-right no-desktop">
+            <div id="menu-btn" class="menu-btn vert">
+              <div></div><span></span><span></span><span></span>
+            </div></a>
+          <div class="responsive-menu">
+            <ul><a href="http://prismatik.com.au/">
+                <li class="nav-item"><span>MAIN SITE</span></li></a><a href="/">
+                <li class="nav-item selected"> <span>BLOG</span></li></a><a href="http://prismatik.com.au/contact/">
+                <li class="nav-item"> <span>CONTACT</span></li></a></ul>
+          </div>
+        </div>
+      </header>
+      <div id="content">
+        <div class="container">
+          <div class="article-header">
+            <h1>How To Stop Babeling And Start Enjoying NodeJS</h1>
+          </div>
+          <article class="article">
+            <section class="article-content"><p>Like many of you, I had also been bitten by the <a href="https://babeljs.io">babeljs</a>
+bug. The promise is actually pretty neat: have all the futuristic twinky dinkies
+right now and deploy them anywhere. Just jack in a <code>postinstall</code> hook and it
+will be all magic and unicorns from there. Destructurning, async/await, default
+parameters all the really nice things will be just waiting to be used for good
+and&nbsp;awesome.</p>
+<p>The truth is, I kind of grew cold to it. Babel is great and a really impressive
+piece of work, but, I feel like it robs me of what I really like about #nodejs;
+its simplicity and nimbleness. I always loved how fast node is. How easy it
+is to prototype with. You just <code>npm init</code>, throw couple of packages together
+and you have a&nbsp;thing.</p>
+<h3 id="the-problem">The&nbsp;Problem</h3>
+<p>Babel touches pretty much every step of a development process in node. And being
+in this position it adds overhead to pretty much everything you do. Have source
+code? Now you have to compile it and add an extra thing to worry about in production.
+Have tests? Yeah, you need to figure how to stitch it together with your babel
+build pipes. Use eslint? You need the <code>babel-eslint</code>, etc,&nbsp;etc.</p>
+<p>And the problem grows like a snow ball. Now you have an extra thing attached
+to everything you do. And there are several ways to setup every one of them. Do
+we call it <code>npm run build</code> or <code>npm run compile</code>? Do we precompile things in dev
+or we use <code>babel-node</code>? The list is goes on and&nbsp;on.</p>
+<p>It got me thinking. What do I actually want from babel? Can I survive without
+those features? Which ones can I have without babel, like maybe with <code>--harmony</code>
+flags? Turned out the answer was: “not that many”, “yes”, “most of&nbsp;them”.</p>
+<p>Allow me to walk you through the&nbsp;cases.</p>
+<h3 id="block-scope-variables">Block Scope&nbsp;Variables</h3>
+<p>I really, really like the new <code>const</code> and <code>let</code> markers in #javascript #es6 edition.
+It is such a nice way to give yourself a hint what supposed to change and what’s
+not. Plus, being a block scope variable (or a constant) it allows the javascript
+engine to perform various optimizations on your code, and, potentially, save
+you from wicked bugs from var names leaking out of a&nbsp;scope.</p>
+<p>Turned out, you can have it in NodeJS right now. Just add <code>&quot;use strict&quot;;</code> on
+top of your file and it will handle block scope variables really nicely and
+efficiently. Or, if you’re too lazy for touching every file, just run your node
+like this <code>node --use_strict blah.js</code> and it will force strict mode to all your
+files in the runtime. Which is the way I prefer to do&nbsp;it.</p>
+<p>Interestingly enough, if you were sloppy and just jacked <code>es2015</code> preset into
+your babel config, it will pretty much convert all your carefully marked consts
+and lets into good ol’ <code>var</code>. In which case you will just delude yourself into
+thinking that you’re doing the right&nbsp;thing.</p>
+<h3 id="destructuring">Destructuring</h3>
+<p>Destructuring in <span class="caps">ES6</span> is awesome. It has pretty much the same effect on your
+programming as pattern matching, but without you feeling smug about it. I would
+still prefer to have a real pattern matching engine in JavaScript some day, but
+right now it’s just about destructuring objects and&nbsp;arrays.</p>
+<p>Turns out that node already has the <code>--harmony_destructuring</code> flag available,
+which turns on the native support for destructuring operators. And if you think
+of it for a second, it is actually a much better option than doing it with
+babel. Because babel does it manually through javascript and harmony does it
+natively in C. So, it is much faster in node than in&nbsp;babel.</p>
+<h3 id="default-rest-params">Default <span class="amp">&amp;</span> Rest&nbsp;Params</h3>
+<p>Being someone who flips between ruby and javascript all the time, I really find
+the default and rest params syntax useful. I liked it very much that babel allows
+me to be in a similar mindset between&nbsp;languages.</p>
+<p>Well, actually, there are <code>--harmony_default_parameters</code> and <code>--harmony_rest_parameters</code>
+options in node right now that flip native support for those features. There
+is also <code>--harmony_spreadcalls</code> to spread arrays into args when you call&nbsp;functions.</p>
+<p>And the same argument goes for this as for the destructuring feature. Native
+support is much faster and more likely being carried over in its current
+implementation to the future versions than what is in&nbsp;babel.</p>
+<h3 id="spread-operators">Spread&nbsp;Operators</h3>
+<p>I really like spreads. Actually, recently, I become somewhat of an amateur
+artisan peanut butter maker. I freshly roast my peanuts, then use raw unprocessed
+honey and himalayan salt. So, good… (see what i did&nbsp;there?)</p>
+<p>Either way, you can turn on native array spreads with the <code>--harmony_spread_arrays</code>
+flag. As the name implies, at the moment, it only does arrays. But, you know what?
+I really don’t mind <code>Object.assign</code>. More of that, I kind of like it, because unlike
+the spread operator, it doesn’t explode when one of the arguments is a <code>null</code> or
+<code>undefined</code>.</p>
+<p>Plus, there are the harmony <code>rest_parameters</code> and <code>spreadcalls</code> that accompany
+the spreadness of the experience. So, you mostly can have native spreads right&nbsp;now.</p>
+<h3 id="async-await-and-stuff">Async/Await and&nbsp;Stuff</h3>
+<p>This was one of the primary driving forces behind me really wanting to jack
+babel in pretty much every project i’ve been working on. It makes it so much
+easier to deal with async control flow. It makes all your code more maintainable
+as well. And the best thing, you can mix it with pretty much anything that talks&nbsp;promises!</p>
+<p>But, guess what. Babel, when set up properly, just converts all your async awaits
+into <code>function *() { yield }</code>. You can have exactly all the same results right
+now with generators and <code>yields</code>. It is mind bogglingly fast and production&nbsp;ready.</p>
+<p>More of that, most of high profile libraries out there already support generators.
+Here for example&nbsp;#expressjs:</p>
+<pre><code class="lang-js">app.get(<span class="string">"/users/:id"</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">req, res</span>) </span>{
+  <span class="keyword">const</span> user = <span class="keyword">yield</span> User.find(req.params.id);
+  res.json(user);
+});
+</code></pre>
+<p>Here is&nbsp;mochajs:</p>
+<pre><code class="lang-js">it(<span class="string">"allows to access a user's data"</span>, <span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>{
+  <span class="keyword">const</span> response = <span class="keyword">yield</span> server.get(<span class="string">"/users/123"</span>);
+
+  expect(response.status).to.eql(<span class="number">200</span>);
+  expect(response.body).to.eql({id: <span class="number">123</span>, username: <span class="string">"nikolay"</span>});
+});
+</code></pre>
+<p>It works right now! More of that, unlike <code>async/await</code>, the modern implementation
+of generators works with both promises and node style callbacks. Which means
+that you don’t need to drag around bluebird and promisify everything like a&nbsp;monkey:</p>
+<pre><code class="lang-js"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);
+<span class="keyword">const</span> User = <span class="built_in">require</span>(<span class="string">"models/user"</span>);
+
+<span class="keyword">const</span> data = <span class="keyword">yield</span> fs.readFile(<span class="string">"/blah"</span>); <span class="comment">// node style callback</span>
+<span class="keyword">const</span> user = <span class="keyword">yield</span> User.find(<span class="number">123</span>);  <span class="comment">// a promise from some <span class="caps">ORM</span></span>
+</code></pre>
+<p>More of that, yields are actually so much betterer than promises when things
+come to errors handling. Raise your hand if you were in a situation where
+someone forgot to add a <code>.catch</code> section to a promise and all errors went unnoticed?
+Yeah, I think we’ve all been there. Doesn’t happen with&nbsp;generators.</p>
+<p>And yet more of that, generators unlock other features that are a total pain in
+the butt with Promises. For example when you need to process a bunch of async tasks
+sequentially. Or, for example, try to write an async <code>while</code> block in Promises.
+It is a lot of&nbsp;fun.</p>
+<p>Just open your heart to generators, it will worth your while. After all Promises
+don’t go anywhere, you can mix and match them with generators too and have best
+of both worlds. But, you don’t need async/await to get&nbsp;there.</p>
+<h3 id="es6-module-imports-exports"><span class="caps">ES6</span> Module&nbsp;Imports/Exports</h3>
+<p>You can’t have them in node at the moment. I know, a bummer. But, you know what?
+I’m okay with that. Destructuring gives me almost all the same&nbsp;thing:</p>
+<pre><code class="lang-js"><span class="keyword">const</span> { blah, blah } = <span class="built_in">require</span>(<span class="string">"./blahs"</span>);
+</code></pre>
+<p>This is not that far&nbsp;from</p>
+<pre><code class="lang-js"><span class="keyword">import</span> { blah, blah } <span class="keyword">from</span> <span class="string">"./blahs"</span>;
+</code></pre>
+<p>Totally survivable and a good exchange for lack of overheads babel adds&nbsp;everywhere.</p>
+<h3 id="final-thoughts">Final&nbsp;Thoughts</h3>
+<p>Recently I have converted several of my medium sized nodejs projects from babel
+to node+harmony. Surprisingly, the transition went really smoothly. Well, I had
+a good tests coverage in all of them to back me up. But, I was surprised how
+trivial it was and how much faster and more pleasant the projects become after
+the&nbsp;transition.</p>
+<p>I know I’m off the hook now and I’m not doing back. I can have practically all the
+same things I have with babel in a fast native form directly in node. My
+dependencies list shrunk several times. Deployment become trivial — it’s just
+the good old <code>npm start</code> now.</p>
+<p>One thing though. All those harmonly flags is a bit of a drag to carry around. I
+really wish node had some sort of a <code>.noderc</code> file where I could specify all those
+flags in one place and then just call plain <code>node blah.js</code>. But, still it is
+a small price to pay for the returned agility and nimbleness of a pure nodejs&nbsp;project.</p>
+<p>And that is pretty much all I have to say on the&nbsp;subject.</p>
+<p>Love <span class="amp">&amp;</span> kisses.&nbsp;Nikolay</p>
+<p><span class="caps">PS</span>: I’m really stocked about Node 6. Apparently a good half of the features that
+I need will graduate to be production ready. Plus thar be&nbsp;Proxies!</p>
+<p><em>Originally hosted on: <a href="http://nikolay.rocks/2016-04-04-how-to-stop-babel">nikolay.rocks</a>.</em></p>
+</section>
+          </article>
+          <div class="author-block author-text">
+            <h5> <em>About The Author</em></h5>
+            <div class="row">
+              <div class="four columns"><span class="author"><a href="/articles/stop-babeling-and-start-enjoying/"><img src="https://s.gravatar.com/avatar/0253acbe8bc984df3952e6ccdf403d6a?s=200" class="author"></a></span>
+              </div>
+              <div class="eight columns">
+                <h4>Nikolay Nemshilov</h4>
+                <p>Javascript god and an amateur peanut butter maker.</p>
+              </div>
+            </div>
+          </div>
+          <div class="back"><a href="/"> 
+              <h6>« Back to Blog</h6></a></div>
+          <div class="comments">
+            <div id="disqus_thread">
+              <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'prismatik';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="container"><a href="http://prismatik.com.au">
+            <div class="logo white">prismatik</div></a>
+          <div class="row">
+            <div class="seven columns">
+              <section class="about"><p><a href="https://prismatik.com.au">Prismatik</a> helps passionate people build great software and businesses. We could help you do that too! <a href="https://prismatik.com.au/contact/">Get in touch</a></p>
+
+              </section>
+            </div>
+            <div class="five columns hide-small"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://plus.google.com/+PrismatikAu/about">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          </div>
+          <div class="row show-small small-socials"><a href="https://twitter.com/theprismatik"><i class="fa fa-twitter fa-3x"></i></a><a href="https://plus.google.com/+PrismatikAu/about">   <i class="fa fa-google-plus fa-3x"></i></a><a href="https://www.facebook.com/ThePrismatik">   <i class="fa fa-facebook fa-3x"></i></a></div>
+          <section class="copy">&copy; 2016 Prismatik</section>
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-48545690-3', 'auto');
+            ga('send', 'pageview');
+          </script>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
