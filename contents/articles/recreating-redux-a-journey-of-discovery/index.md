@@ -224,7 +224,13 @@ As shown in the official documentation, *combineReducers* takes an object with i
 
 Let’s take a look at an implementation of this function.
 
-<script src=https://gist.github.com/Nicktho/fb3a77ff84838f0d7827d381daba3c8c#file-recreating-redux-1-js></script>
+```
+export function createStore(reducer, initialState) {
+  let currentState = initialState;
+
+  return {}
+}
+```
 
 What we’ve created here is essentially a higher-order reducer. We’ll return a new reducer, that when called, loops through all passed in reducers and calls them with the current state and action. These results are bundled in an object with each key, the key of the reducer in the initially passed in object, aka, our state tree!
 
