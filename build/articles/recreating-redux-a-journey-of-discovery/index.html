@@ -204,9 +204,12 @@
 });
 </code></pre><p>As shown in the official documentation, <em>combineReducers</em> takes an object with its keys as parts in the state tree and it’s values their reducers. It then returns a single reducer, ready to pass into <em>createStore. </em>We’ll test this functionality by combining two reducers and passing through one action to see if the state updates&nbsp;correctly.</p>
 <p>Let’s take a look at an implementation of this&nbsp;function.</p>
-<script src=https://gist.github.com/Nicktho/fb3a77ff84838f0d7827d381daba3c8c#file-recreating-redux-1-js></script>
+<pre><code>export function createStore(reducer, initialState) {
+  let currentState = initialState;
 
-<p>What we’ve created here is essentially a higher-order reducer. We’ll return a new reducer, that when called, loops through all passed in reducers and calls them with the current state and action. These results are bundled in an object with each key, the key of the reducer in the initially passed in object, aka, our state&nbsp;tree!</p>
+  return {}
+}
+</code></pre><p>What we’ve created here is essentially a higher-order reducer. We’ll return a new reducer, that when called, loops through all passed in reducers and calls them with the current state and action. These results are bundled in an object with each key, the key of the reducer in the initially passed in object, aka, our state&nbsp;tree!</p>
 <h2 id="wrapping-up">Wrapping&nbsp;up</h2>
 <p>I find learning through recreation produces a far deeper understanding for myself and I hope it did for you too. Behind the now countless libraries and middlewares built on top of it, Redux is quite a simple library, but a powerful idea and&nbsp;architecture.</p>
 <p><a href="https://github.com/Nicktho/recreating-redux">The source for the complete project is available on&nbsp;GitHub.</a></p>
