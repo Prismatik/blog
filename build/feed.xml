@@ -5,9 +5,188 @@
     <atom:link href="http://blog.prismatik.com.au/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://blog.prismatik.com.au</link>
     <description>Things we find interesting.</description>
-    <pubDate>Wed, 06 Apr 2016 10:00:00 +1000</pubDate>
+    <pubDate>Tue, 12 Apr 2016 10:00:00 +1000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Recreating Redux — Behind the magic curtain</title>
+      <link>http://blog.prismatik.com.au/articles/recreating-redux-a-journey-of-discovery/</link>
+      <pubDate>Tue, 12 Apr 2016 10:00:00 +1000</pubDate>
+      <guid isPermaLink="true">http://blog.prismatik.com.au/articles/recreating-redux-a-journey-of-discovery/</guid>
+      <author></author>
+      <description>&lt;p&gt;Released mid 2015, &lt;a href=&quot;https://github.com/reactjs/redux/&quot;&gt;Redux&lt;/a&gt; has quickly become one of the most popular libraries to manage state in a React application. Libraries such as &lt;a href=&quot;https://github.com/reactjs/react-redux&quot;&gt;React-Redux&lt;/a&gt;, &lt;a href=&quot;https://github.com/reactjs/react-router-redux&quot;&gt;React-Router-Redux&lt;/a&gt; and middleware such as &lt;a href=&quot;https://github.com/gaearon/redux-thunk&quot;&gt;redux-thunk&lt;/a&gt; make it easy to quickly create single page applications with react and redux, though can crowd and overwhelm someone just beginning to explore these ideas.&lt;/p&gt;
+&lt;p&gt;Throughout this article we’ll be taking a step back, to implement a simplified version of the core of redux, with the intention of developing a deeper understanding of the underlying concepts behind the library.&lt;/p&gt;
+&lt;h2 id=&quot;the-core&quot;&gt;The Core&lt;/h2&gt;
+&lt;p&gt;The idea behind Redux is quite simple:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;All the state of your application lives in a single &lt;strong&gt;store&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;To change the state of your application, you must &lt;strong&gt;dispatch&lt;/strong&gt; an &lt;strong&gt;action&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Actions transform the state through the use of a &lt;strong&gt;reducer&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When an action is dispatched, the store lets &lt;strong&gt;subscribers&lt;/strong&gt; know the state has changed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’ll be implementing these using ES2015, transpiling with &lt;a href=&quot;https://babeljs.io/&quot;&gt;Babel&lt;/a&gt; and testing with &lt;a href=&quot;https://mochajs.org/&quot;&gt;Mocha&lt;/a&gt; and &lt;a href=&quot;http://chaijs.com/&quot;&gt;Chai&lt;/a&gt;. All code below is &lt;a href=&quot;https://github.com/Nicktho/recreating-redux&quot;&gt;available on Github.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;all-the-state-of-your-application-lives-in-a-single-store-&quot;&gt;All the state of your application lives in a single &lt;strong&gt;store&lt;/strong&gt;.&lt;/h3&gt;
+&lt;p&gt;Redux exports the function &lt;em&gt;createStore&lt;/em&gt;, which, as the name implies, creates and returns our store, the center of a redux application.&lt;/p&gt;
+&lt;p&gt;We’ll start here.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export function createStore(reducer, initialState) {
+  let currentState = initialState;
+
+  return {}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;createStore&lt;/em&gt; takes two arguments, &lt;em&gt;reducer&lt;/em&gt; and &lt;em&gt;initialState. &lt;/em&gt;Let’s store the initialState as our current state for now.&lt;/p&gt;
+&lt;p&gt;We’ll need a way to access our state, the store supplies us with a &lt;em&gt;getState&lt;/em&gt; method to do just that. This is also a good opportunity for us to write our first test.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;describe(&amp;#39;createStore&amp;#39;, () =&amp;gt; {
+  describe(&amp;#39;#getState&amp;#39;, () =&amp;gt; {
+    it(&amp;#39;should return the current state&amp;#39;, () =&amp;gt; {
+      const state = { notes: [ &amp;#39;hello world&amp;#39;, &amp;#39;hello&amp;#39; ] };
+
+      const store = createStore(x =&amp;gt; x, state);
+
+      expect(store.getState()).to.equal(state);
+    });
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Our state tree in this and future tests will resemble a simple note taking application. Our &lt;em&gt;reducer&lt;/em&gt; here returns any argument passed into it, as we won’t be focusing on that just yet.&lt;/p&gt;
+&lt;p&gt;Let’s implement our method.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export function createStore(reducer, initialState) {
+  let currentState = initialState;
+
+  function getState() {
+    return currentState;
+  }
+
+  return { getState };
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Great, now we can access our store’s state, but to change it we’ll need to dispatch an action.&lt;/p&gt;
+&lt;h3 id=&quot;to-change-the-state-of-your-application-you-must-dispatch-an-action-which-transforms-the-state-through-the-use-of-a-reducer-&quot;&gt;To change the state of your application, you must &lt;strong&gt;dispatch&lt;/strong&gt; an &lt;strong&gt;action, &lt;/strong&gt;which transforms the state through the use of a &lt;strong&gt;reducer&lt;/strong&gt;.&lt;/h3&gt;
+&lt;p&gt;Let’s start out with another test&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;describe(&amp;#39;#dispatch&amp;#39;, () =&amp;gt; {
+  const reducer = (state = [ &amp;#39;hello world&amp;#39; ], action) =&amp;gt; {
+    switch(action.type) {
+      case &amp;#39;ADD_NOTE&amp;#39;:
+        return [ ...state, action.payload ];
+      default:
+        return state;
+    }
+  };
+
+  const addNote = payload =&amp;gt; ({ type: &amp;#39;ADD_NOTE&amp;#39;, payload });
+
+  it(&amp;#39;should update the state with the result of the reducer&amp;#39;, () =&amp;gt; {
+    const store = createStore(reducer);
+
+    store.dispatch(addNote(&amp;#39;hello&amp;#39;));
+
+    expect(store.getState()).to.deep.equal([ &amp;#39;hello world&amp;#39;, &amp;#39;hello&amp;#39; ]);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;First we’re creating our notes reducer and an action creator, &lt;em&gt;addNote&lt;/em&gt;, if you would like to learn more about reducers and action creators, the &lt;a href=&quot;http://redux.js.org/docs/basics/Reducers.html&quot;&gt;Redux Documentation&lt;/a&gt; is an excellent resource&lt;em&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In our test, we’ll create our store, dispatch our action with a new payload and check to see if the store was successfully updated.&lt;/p&gt;
+&lt;p&gt;Let’s implement it!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export function createStore(reducer, initialState) {
+  let currentState = initialState;
+
+  function getState() {
+    return currentState;
+  }
+
+  function dispatch(action) {
+    currentState = reducer(currentState, action);
+  }
+
+  dispatch({ type: &amp;#39;INIT&amp;#39; });
+
+  return { getState, dispatch };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Notice we’re instantly dispatching an &lt;em&gt;INIT &lt;/em&gt;action. This will flow throw all our reducers and return the default state, setting up our store.&lt;/p&gt;
+&lt;p&gt;Great, almost there, the last step is to notify the store’s subscribers that a change has been made.&lt;/p&gt;
+&lt;h3 id=&quot;when-an-action-is-dispatched-the-store-lets-subscribers-know-the-state-has-changed-&quot;&gt;When an action is dispatched, the store lets &lt;strong&gt;subscribers&lt;/strong&gt; know the state has changed.&lt;/h3&gt;
+&lt;p&gt;We’ll need a way to subscribe to our store, let’s write a test.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;describe(&amp;#39;#subscribe&amp;#39;, () =&amp;gt; {
+  it(&amp;#39;should add the passed function to the listeners&amp;#39;, () =&amp;gt; {
+    const store = createStore(x =&amp;gt; x, {});
+
+    let called = false;
+
+    store.subscribe(() =&amp;gt; called = true);
+    store.dispatch({ type: &amp;#39;&amp;#39; });
+
+    expect(called).to.be.true;
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Since our listeners will be private, we’ll need update our dispatch method to notify listeners to pass this test.&lt;/p&gt;
+&lt;p&gt;We’ll go ahead and implement &lt;em&gt;subscribe&lt;/em&gt;, which will add the passed function to an array of listeners, also, we’ll update our dispatch to let our listeners know something has changed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export function createStore(reducer, initialState) {
+  let listeners = [];
+  let currentState = initialState;
+
+  function getState() {
+    return currentState;
+  }
+
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
+
+  function dispatch(action) {
+    currentState = reducer(currentState, action);
+
+    listeners.forEach(listener =&amp;gt; listener());
+  }
+
+  dispatch({ type: &amp;#39;INIT&amp;#39; });
+
+  return { getState, subscribe, dispatch };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Believe it or not, we’ve just implemented a simplified version of Redux!&lt;/p&gt;
+&lt;p&gt;Let’s look at one more function the redux package gives us, &lt;em&gt;combineReducers.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;combinereducers-the-helper-&quot;&gt;combineReducers, the helper.&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;combineReducers &lt;/em&gt;is, in my opinion, the most beneficial helper method supplied by the Redux package. Essentially, it allows you to split up your reducer in to multiple reducers for each part of your state tree. Before continuing, I recommend reading through the &lt;a href=&quot;http://redux.js.org/docs/basics/Reducers.html&quot;&gt;official documentation for reducers&lt;/a&gt; if you have not done so already.&lt;/p&gt;
+&lt;p&gt;As usual, we’ll start with a test.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;describe(&amp;#39;combineReducers&amp;#39;, () =&amp;gt; {
+  it(&amp;#39;should combine multiple reducers to a single reducer&amp;#39;, () =&amp;gt; {
+    const notes = (state = [ &amp;#39;hello world&amp;#39; ], action) =&amp;gt; {
+      switch(action.type) {
+        case &amp;#39;ADD_NOTE&amp;#39;:
+          return [ ...state, action.payload ];
+        default:
+          return state;
+      }
+    };
+
+    const numbers = (state = [ 1 ], action) =&amp;gt; {
+      switch(action.type) {
+        case &amp;#39;ADD_NUMBER&amp;#39;:
+          return [ ...state, action.payload ];
+        default:
+          return state;
+      }
+    };
+
+    const reducer = combineReducers({ notes, numbers });
+
+    const state = reducer({}, { type: &amp;#39;ADD_NUMBER&amp;#39;, payload: 2 });
+
+    expect(state).to.deep.equal({
+      notes: [ &amp;#39;hello world&amp;#39; ],
+      numbers: [ 1, 2 ]
+    });
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As shown in the official documentation, &lt;em&gt;combineReducers&lt;/em&gt; takes an object with its keys as parts in the state tree and it’s values their reducers. It then returns a single reducer, ready to pass into &lt;em&gt;createStore. &lt;/em&gt;We’ll test this functionality by combining two reducers and passing through one action to see if the state updates correctly.&lt;/p&gt;
+&lt;p&gt;Let’s take a look at an implementation of this function.&lt;/p&gt;
+&lt;script src=https://gist.github.com/Nicktho/fb3a77ff84838f0d7827d381daba3c8c#file-recreating-redux-1-js&gt;&lt;/script&gt;
+
+&lt;p&gt;What we’ve created here is essentially a higher-order reducer. We’ll return a new reducer, that when called, loops through all passed in reducers and calls them with the current state and action. These results are bundled in an object with each key, the key of the reducer in the initially passed in object, aka, our state tree!&lt;/p&gt;
+&lt;h2 id=&quot;wrapping-up&quot;&gt;Wrapping up&lt;/h2&gt;
+&lt;p&gt;I find learning through recreation produces a far deeper understanding for myself and I hope it did for you too. Behind the now countless libraries and middlewares built on top of it, Redux is quite a simple library, but a powerful idea and architecture.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Nicktho/recreating-redux&quot;&gt;The source for the complete project is available on GitHub.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>How To Stop Babeling And Start Enjoying NodeJS</title>
       <link>http://blog.prismatik.com.au/articles/stop-babeling-and-start-enjoying/</link>
